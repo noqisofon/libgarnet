@@ -1,82 +1,140 @@
-#include <garnet/memoryman.h>
-#include <garnet/_tstring.h>
+#include <stdafx.h>
+
+#include <string.h>
+
+#include <garnet/galloc.h>
+#include <garnet/gstring.h>
 
 
-static char* create_cstring(size_t _N);
+/**
+ * @def EMPTY_STRING
+ * 空文字列を表します。
+ */
+#define     EMPTY_STRING        ""
 
 
-char* g_strdup(const char* s)
+/**
+ * @def STRING_SENTINEL
+ * 文字列の終を示す文字です。
+ */
+#define     STRING_SENTINEL     '\0'
+
+
+/**
+ * 長さ n の文字列バッファを返します。
+ */
+static gchar* g_create_cstring(size_t n);
+
+
+#if 0
+size_t g_strlen(const gchar* self)
 {
-    char*   result;
+    size_t  i = 0;
+
+    while ( *self ++ )
+        i ++;
+
+    return i;
+}
+#endif
+
+
+gchar* g_strdup(const gchar* s)
+{
+    gchar*  result;
     size_t  insize;
 
     if ( s == NULL )
         return NULL;
-    if ( s == "" )
-        return "";
 
-    insize  = strlen( s );
-    result  = create_cstring( insize );
+    insize  = g_strlen( s );
+    if ( insize == 0 )
+        return EMPTY_STRING;
+    result  = g_create_cstring( insize );
 
-    return strncpy( result, s, insize );
+    return g_strncpy( result, s, insize );
 }
 
 
-char* g_strndup(const char* s, size_t n)
+gchar* g_strndup(const gchar* s, size_t n)
 {
-    char*   result;
+    gchar           *result, *it;
+    const gchar*    stop;
+    size_t          len;
 
     if ( s == NULL )
         return NULL;
-    if ( s == "" || n == 0 )
-        return "";
+    if ( n == 0 )
+        return EMPTY_STRING;
+    len     = g_strlen( s );
+    if ( len == 0 )
+        return EMPTY_STRING;
 
-    result  = create_cstring( n );
+    result  = g_create_cstring( n );
 
-    for ( int i = 0; i < n; ++ i ) {
-        result[i]   = s[i];
-    }
+    stop    = s + n;
+    it      = result;
+    while ( s != stop )
+        *it ++   = *s ++;
+
     return result;
 }
 
 
-char* g_strnfill(size_t _N, char ch)
+gchar* g_strnfill(size_t n, gchar ch)
 {
-    char    *result, *it, *stop;
+    gchar    *result, *it, *stop;
 
-    if ( _N == 0 )
-        return "";
+    if ( n == 0 )
+        return EMPTY_STRING;
 
-    result  = create_cstring( n );
+    result  = g_create_cstring( n );
 
     it      = result;
     stop    = it + n;
 
-    for ( ; it != stop; ++ it ) {
-        *it = ch;
-    }
-    *it = '\0';
+    while ( it != stop )
+        *it ++ = ch;
+
+    *it = STRING_SENTINEL;
 
     return result;
 }
 
 
-char* g_str_find(const char* s, size_t _N, char found_ch)
+gchar* g_str_assign(gchar* self, const gchar* other)
 {
-    char*   last    = s + _N;
+    size_t  otheg_len   = g_strlen( other );
 
-    for ( ; s != last; ++ s ) {
-        if ( *s == found_ch )
-            return s;
+    if ( otheg_len == 0 )
+        return NULL;
+
+    if ( *self )
+        self    = g_new(gchar, otheg_len);
+    else
+        self    = REALLOC(gchar, self, otheg_len);
+
+    return g_strncpy( self, other, otheg_len + 1 );
+}
+
+
+const gchar* g_str_find(const gchar* self, size_t n, gchar found_ch)
+{
+    const gchar*   last = self + n;
+
+    for ( ; self != last; ++ self ) {
+        if ( *self == found_ch )
+            return self;
     }
     return last;
 }
 
 
-char* g_str_rfind(const char* s, size_t _N, char found_ch)
+const gchar* g_str_rfind(const gchar* s, size_t n, gchar found_ch)
 {
-    char*   it    = s + _N;
-    for ( ; it != s; -- it ) {
+    const gchar*   it;
+
+    for ( it = s + n; it != s; -- it ) {
         if ( *it == found_ch )
             return it;
     }
@@ -84,23 +142,97 @@ char* g_str_rfind(const char* s, size_t _N, char found_ch)
 }
 
 
-boolean_t g_str_startwith(const char* self, const char* prefix)
+gboolean g_str_equal(const gchar* left, const gchar* right)
 {
-    size_t  self_length     = strlen( self );
-    size_t  prefix_length   = strlen( prefix );
+    return g_str_equal_len( left, g_strlen( left ), right, g_strlen( right ) );
+}
+gboolean g_str_equal_len(const gchar* left, size_t left_len, const gchar* right, size_t right_len)
+{
+    int i;
 
-    if ( self_length < prefix_length )
-        return False;
+    if ( left_len != right_len )
+        return false;
 
-    while ( *prefix)
-        if ( *prefix ++ != *self ++ )
+    for ( i = 0; i < left_len; ++ i) {
+        if ( left[i] != right[i] )
             return false;
-
-    return True;
+    }
+    return true;
 }
 
 
-static char* create_cstring(size_t _N)
+gboolean g_str_startswith(const gchar* self, const gchar* prefix)
 {
-    return (char *)g_malloc( _N + 1 )
+    size_t  self_length     = g_strlen( self );
+    size_t  prefix_length   = g_strlen( prefix );
+
+    if ( self_length < prefix_length )
+        return false;
+
+    while ( *prefix ) {
+        if ( *prefix ++ != *self ++ )
+            return false;
+    }
+    return true;
+}
+
+
+gchar* g_str_append(gchar* self, const gchar* appendee)
+{
+    gchar*  p;
+    size_t  self_len;
+
+    self_len    = g_strlen( self );
+    p           = self + self_len;
+
+    while ( *p ++ = *appendee ++ )
+        ;
+
+    return p;
+}
+
+
+gchar* g_str_appendch(gchar* self, gchar appendee)
+{
+    gchar*   p  = self + g_strlen( self );
+
+    *p ++   = appendee;
+
+    return p;
+}
+
+
+gchar* g_str_concat(const gchar* self, const gchar* right)
+{
+    gchar   *ret, *p;
+    size_t  self_len, right_len;
+
+    self_len    = g_strlen( self );
+    right_len   = g_strlen( right );
+
+    ret = g_create_cstring( self_len + right_len );
+    p   = g_strcpy( ret, self ) + self_len;
+    p   = g_strcpy( p, right ) + right_len;
+
+    return ret;
+}
+
+
+int32_t g_str_slice(const gchar* self, int32_t n)
+{
+    size_t  len;
+
+    if ( !self )
+        return 0;
+    len     = g_strlen( self );
+    if ( len < n )
+        return 0;
+
+    return self[n];
+}
+
+
+static gchar* g_create_cstring(size_t n)
+{
+    return g_new(gchar, n + 1);
 }
