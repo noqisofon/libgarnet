@@ -58,7 +58,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\..\include;C:\usr\local\include</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)$(ProjectName)\</ObjectFileName>
       <ProgramDataBaseFileName>$(OutDir)$(ProjectName)-vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <CompileAs>CompileAsC</CompileAs>
@@ -77,7 +77,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..\..\..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\..\..\include;C:\usr\local\include</AdditionalIncludeDirectories>
       <ObjectFileName>$(IntDir)$(ProjectName)\</ObjectFileName>
       <ProgramDataBaseFileName>$(OutDir)$(ProjectName)-vc$(PlatformToolsetVersion).pdb</ProgramDataBaseFileName>
       <CompileAs>CompileAsC</CompileAs>
@@ -95,9 +95,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\garnet\galloc.h" />
+    <ClInclude Include="..\..\..\include\garnet\garnet.h" />
     <ClInclude Include="..\..\..\include\garnet\glinkedlist.h" />
     <ClInclude Include="..\..\..\include\garnet\glogger.h" />
     <ClInclude Include="..\..\..\include\garnet\gstring.h" />
+    <ClInclude Include="..\..\..\include\garnet\gthread.h" />
     <ClInclude Include="..\..\..\include\garnet\gtypes.h" />
     <ClInclude Include="..\..\..\include\garnet\_garnet.h" />
     <ClInclude Include="stdafx.h" />
@@ -105,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\galloc.c" />
+    <ClCompile Include="..\..\..\src\gbitset.c" />
     <ClCompile Include="..\..\..\src\glinkedlist.c" />
     <ClCompile Include="..\..\..\src\glogger.c" />
     <ClCompile Include="..\..\..\src\gstring.c" />

@@ -5,6 +5,8 @@
 #include <garnet/galloc.h>
 #include <garnet/gstring.h>
 
+#include <cast.h>
+
 
 /**
  * @def EMPTY_STRING
@@ -52,7 +54,7 @@ gchar* g_strdup(const gchar* s)
         return EMPTY_STRING;
     result  = g_create_cstring( insize );
 
-    return g_strncpy( result, s, insize );
+    return g_strncpy( result, s, insize + 1 );
 }
 
 
@@ -104,21 +106,21 @@ gchar* g_strnfill(size_t n, gchar ch)
 
 gchar* g_str_assign(gchar* self, const gchar* other)
 {
-    size_t  otheg_len   = g_strlen( other );
+    size_t  other_len   = g_strlen( other );
 
-    if ( otheg_len == 0 )
+    if ( other_len == 0 )
         return NULL;
 
     if ( *self )
-        self    = g_new(gchar, otheg_len);
+        self    = g_new(gchar, other_len);
     else
-        self    = REALLOC(gchar, self, otheg_len);
+        self    = REALLOC(gchar, self, other_len);
 
-    return g_strncpy( self, other, otheg_len + 1 );
+    return g_strncpy( self, other, other_len + 1 );
 }
 
 
-const gchar* g_str_find(const gchar* self, size_t n, gchar found_ch)
+const gchar* g_strchr(const gchar* self, size_t n, gchar found_ch)
 {
     const gchar*   last = self + n;
 
@@ -130,7 +132,7 @@ const gchar* g_str_find(const gchar* self, size_t n, gchar found_ch)
 }
 
 
-const gchar* g_str_rfind(const gchar* s, size_t n, gchar found_ch)
+const gchar* g_strrchr(const gchar* s, size_t n, gchar found_ch)
 {
     const gchar*   it;
 
@@ -139,6 +141,68 @@ const gchar* g_str_rfind(const gchar* s, size_t n, gchar found_ch)
             return it;
     }
     return it;
+}
+
+
+const gchar* g_str_find(const gchar* self, const gchar* search_text)
+{
+    int     i;
+    int     matchc              = 0;
+    size_t  search_text_len     = g_strlen( search_text );
+
+    if ( search_text_len == 0 )
+        return NULL;
+
+    for ( i = 0; self[i] != STRING_SENTINEL; ++ i ) {
+        if ( self[i] == search_text[matchc] )
+            ++ matchc;
+
+        if ( __STATIC_CAST(size_t, matchc) == search_text_len )
+            return self + (i - (search_text_len - 1) );
+    }
+    return NULL;
+}
+
+
+const gchar* g_str_find_last_of(const gchar* self, const gchar* search_text)
+{
+    int     i;
+    int     matchc              = 0;
+    size_t  search_text_len     = g_strlen( search_text );
+
+    gchar*  p;
+
+    if ( search_text_len == 0 )
+        return NULL;
+
+    for ( i = 0; self[i] != STRING_SENTINEL; ++ i ) {
+        if ( self[i] == search_text[matchc] )
+            ++ matchc;
+
+        if ( __STATIC_CAST(size_t, matchc) == search_text_len )
+            p   = self + (i - (search_text_len - 1) );
+    }
+    return p;
+}
+
+
+int g_str_index_of(const gchar* self, const gchar* search_text)
+{
+    int     i;
+    int     matchc              = 0;
+    size_t  search_text_len     = g_strlen( search_text );
+
+    if ( search_text_len == 0 )
+        return -1;
+
+    for ( i = 0; self[i] != STRING_SENTINEL; ++ i ) {
+        if ( self[i] == search_text[matchc] )
+            ++ matchc;
+
+        if ( __STATIC_CAST(size_t, matchc) == search_text_len )
+            return i - (search_text_len - 1);
+    }
+    return -1;
 }
 
 
@@ -218,15 +282,15 @@ gchar* g_str_concat(const gchar* self, const gchar* right)
 }
 
 
-int32_t g_str_slice(const gchar* self, int32_t n)
+gint g_str_char_at(const gchar* self, gint n)
 {
     size_t  len;
 
     if ( !self )
-        return 0;
+        return -1;
     len     = g_strlen( self );
-    if ( len < n )
-        return 0;
+    if ( 0 > n || __STATIC_CAST(gint, len) < n )
+        return -1;
 
     return self[n];
 }

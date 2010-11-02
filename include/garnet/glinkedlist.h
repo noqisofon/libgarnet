@@ -1,4 +1,5 @@
 /**
+ * @file glinkedlist.h
  * @since 2010-10-13T09:31:23+0900
  */
 #ifndef garnet_glinkedlist_h
@@ -32,7 +33,7 @@ GList*  g_list_add_front(GList* self, VALUE item);
 /**
  * リストの position 番目に item を挿入します。
  */
-GList*  g_list_insert(GList* self, VALUE item, int32_t position);
+GList*  g_list_insert(GList* self, VALUE item, gint position);
 
 
 /**
@@ -56,7 +57,7 @@ size_t  g_list_length(GList* self);
 /**
  * リストの position 番目のノードを返します。
  */
-GList*  g_list_advance(GList* self, int32_t distance);
+GList*  g_list_advance(GList* self, gint distance);
 
 
 /**

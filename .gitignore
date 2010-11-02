@@ -1,4 +1,6 @@
 *.*.*~
+*.E
+*.a
 *.application
 *.aps
 *.bat
@@ -7,8 +9,8 @@
 *.cdf
 *.conf
 *.dep
-*.dump
 *.dll
+*.dump
 *.exe
 *.exp
 *.htm
@@ -18,7 +20,9 @@
 *.ini
 *.ipch
 *.lastbuildstate
+*.li
 *.lib
+*.list
 *.lnk
 *.log
 *.manifest

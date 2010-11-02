@@ -1,7 +1,10 @@
 #ifndef garnet__garnet_h
 #define garnet__garnet_h
 
-#include <stdint.h>
+//#ifndef _MSC_VER
+#   include <stdint.h>
+#   include <limits.h>
+//#endif  /* ndef _MSC_VER */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -16,6 +19,16 @@
 typedef     void*       VALUE;
 #   define      GARNET_DEFINE_VALUE
 #endif  /* GARNET_DEFINE_VALUE */
+
+#ifndef GARNET_DEFINE_GINT
+typedef     int32_t       gint;
+#   define      GARNET_DEFINE_GINT
+#endif  /* GARNET_DEFINE_GINT */
+
+#ifndef GARNET_DEFINE_GUINT
+typedef     uint32_t       guint;
+#   define      GARNET_DEFINE_GUINT
+#endif  /* GARNET_DEFINE_GUINT */
 
 #ifndef GARNET_DEFINED_GCHAR
 #   if defined(_UNICODE) || defined(UNICODE)

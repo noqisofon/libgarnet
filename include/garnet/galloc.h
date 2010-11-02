@@ -1,7 +1,18 @@
+/**
+ * @file    galloc.h
+ * @brief   ƒƒ‚ƒŠŠ„‚è“–‚ÄŠÖ”ƒ‚ƒWƒ…[ƒ‹B
+ * @since   2010-08-25T13:37:43
+ */
 #ifndef garnet_galloc_h
 #define garnet_galloc_h
 
-#include "_garnet.h"
+#include <stdint.h>
+
+
+#ifndef GARNET_DEFINE_VALUE
+typedef     void*       VALUE;
+#   define      GARNET_DEFINE_VALUE
+#endif  /* GARNET_DEFINE_VALUE */
 
 
 /**
@@ -39,6 +50,9 @@ void g_free(VALUE ptr);
  * @def g_new
  */
 #define     g_new(_type_, n)                    (_type_ *)g_malloc2( n, sizeof(_type_) )
+
+
+#define     g_delete(p)                         g_free( p )
 
 
 /**

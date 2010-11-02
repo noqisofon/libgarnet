@@ -54,7 +54,7 @@ GList* g_list_add_front(GList* self, VALUE item)
 }
 
 
-GList* g_list_insert(GList* self, VALUE item, int32_t position)
+GList* g_list_insert(GList* self, VALUE item, gint position)
 {
     GList   *where, *node;
 
@@ -125,10 +125,10 @@ size_t g_list_length(GList* self)
 }
 
 
-GList* g_list_advance(GList* self, int32_t distance)
+GList* g_list_advance(GList* self, gint distance)
 {
     GList*      p;
-    int32_t     n;
+    gint     n;
 
     if ( !self )
         return NULL;

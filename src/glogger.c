@@ -102,7 +102,7 @@ void g_info(const gchar* format, ...)
 #endif  /* !defined(_STDC_VERSION) && !defined(_MSC_VER) */
 
 
-uint32_t g_log_set_handler( const gchar*    log_domain,
+guint g_log_set_handler( const gchar*    log_domain,
                             LogLevelFlags   log_levels,
                             g_log_functor   log_func,
                             VALUE           useg_data
@@ -113,7 +113,7 @@ uint32_t g_log_set_handler( const gchar*    log_domain,
 
 
 void g_log_remove_handler( const gchar*     log_domain,
-                           uint32_t         hundleg_id
+                           guint         hundleg_id
                            )
 {
 }

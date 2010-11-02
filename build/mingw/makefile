@@ -29,7 +29,7 @@ target      = $(outdir)/lib$(projectname).$(target_ext)
 cc      = gcc
 cflags  = -O2 -Wall -Wextra -Wformat=2 -Wcast-qual -Wcast-align \
           -Wfloat-equal -Wpointer-arith -fsigned-char \
-          -I"../../include" -I"../Win32/garnet_static" \
+          -I"../../include" -I"../Win32/garnet_static" -I"c:/usr/local/include" \
           -D_DEBUG
 
 rm      = rm
