@@ -5,7 +5,20 @@
 #ifndef garnet_glinkedlist_h
 #define garnet_glinkedlist_h
 
-#include "_garnet.h"
+
+#ifndef GARNET_DEFINE_GARNET_API
+#   define     GARNET_API      __stdcall
+#endif  /* ndef GARNET_DEFINE_GARNET_API */
+
+#ifndef GARNET_DEFINE_VALUE
+typedef     void*       VALUE;
+#   define      GARNET_DEFINE_VALUE
+#endif  /* GARNET_DEFINE_VALUE */
+
+#ifndef GARNET_DEFINE_GINT
+typedef     int32_t       gint;
+#   define      GARNET_DEFINE_GINT
+#endif  /* GARNET_DEFINE_GINT */
 
 
 /**
@@ -21,55 +34,55 @@ typedef struct g_linkedlist_t {
 /**
  * リストの末尾に item を入れたノードを追加します。
  */
-GList*  g_list_add(GList* self, VALUE item);
+GList* GARNET_API  g_list_add(GList* self, VALUE item);
 
 
 /**
  * リストの先頭に item を追加します。
  */
-GList*  g_list_add_front(GList* self, VALUE item);
+GList* GARNET_API  g_list_add_front(GList* self, VALUE item);
 
 
 /**
  * リストの position 番目に item を挿入します。
  */
-GList*  g_list_insert(GList* self, VALUE item, gint position);
+GList* GARNET_API  g_list_insert(GList* self, VALUE item, gint position);
 
 
 /**
  * 指定されたリストの先頭のノードを返します。
  */
-GList*  g_list_front(GList* self);
+GList* GARNET_API  g_list_front(GList* self);
 
 
 /**
  * 指定されたリストの末尾のノードを返します。
  */
-GList*  g_list_behind(GList* self);
+GList* GARNET_API  g_list_behind(GList* self);
 
 
 /**
  * 指定されたリストのサイズを返します。
  */
-size_t  g_list_length(GList* self);
+size_t GARNET_API  g_list_length(GList* self);
 
 
 /**
  * リストの position 番目のノードを返します。
  */
-GList*  g_list_advance(GList* self, gint distance);
+GList* GARNET_API  g_list_advance(GList* self, gint distance);
 
 
 /**
  * リストから指定された値が入っているノードを検索します。
  */
-GList*  g_list_find(GList* self, VALUE found);
+GList* GARNET_API  g_list_find(GList* self, VALUE found);
 
 
 /**
  * 指定されたリストが使っているメモリを全て開放します。
  */
-void    g_list_free(GList* self);
+void GARNET_API    g_list_free(GList* self);
 
 
 #endif  /* garnet_glinkedlist_h */

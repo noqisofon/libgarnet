@@ -6,14 +6,39 @@
 #ifndef garnet_gstring_h
 #define garnet_gstring_h
 
-#include <garnet/_garnet.h>
+
+#ifndef GARNET_DEFINE_GARNET_API
+#   define     GARNET_API      __stdcall
+#endif  /* ndef GARNET_DEFINE_GARNET_API */
+
+#ifndef GARNET_DEFINED_GCHAR
+typedef     char        gchar;
+#   define      GARNET_DEFINED_GCHAR
+#endif  /* ndef GARNET_DEFINED_GCHAR */
+
+#ifndef GARNET_DEFINE_GINT
+typedef     int32_t       gint;
+#   define      GARNET_DEFINE_GINT
+#endif  /* GARNET_DEFINE_GUINT */
+
+#ifndef GARNET_DEFINED_GBOOLEAN
+#   ifndef __cplusplus
+typedef enum tag_boolean {
+    false   = 0,
+    true    = 1
+} gboolean;
+#   else
+typedef     bool        gboolean;
+#   endif  /* ndef __cplusplus */
+#   define      GARNET_DEFINED_GBOOLEAN
+#endif  /* def GARNET_DEFINED_GBOOLEAN */
 
 
 #if 0
 /**
  * 指定された文字列の長さを返します。
  */
-size_t g_strlen(const gchar* self);
+size_t GARNET_API g_strlen(const gchar* self);
 #else
 /**
  * @def g_strlen
@@ -36,7 +61,7 @@ size_t g_strlen(const gchar* self);
  *
  *  @note 複製された文字列は使い終わったら g_free 関数で開放してください。
  */
-gchar* g_strdup(const gchar* self);
+gchar* GARNET_API g_strdup(const gchar* self);
 
 
 /**
@@ -48,7 +73,7 @@ gchar* g_strdup(const gchar* self);
  *
  *  @note 複製された文字列は使い終わったら g_free 関数で開放してください。
  */
-gchar* g_strndup(const gchar* self, size_t n);
+gchar* GARNET_API g_strndup(const gchar* self, size_t n);
 
 
 /**
@@ -61,7 +86,7 @@ gchar* g_strndup(const gchar* self, size_t n);
  * @note
  *      返された文字列は使い終わったら g_free 関数で開放してください。
  */
-gchar* g_strnfill(size_t n, gchar filled_ch);
+gchar* GARNET_API g_strnfill(size_t n, gchar filled_ch);
 
 
 /**
@@ -74,7 +99,7 @@ gchar* g_strnfill(size_t n, gchar filled_ch);
  *  @note
  *      other が self より長い場合、返された self が同じアドレスではありません。
  */
-gchar* g_str_assign(gchar* self, const gchar* other);
+gchar* GARNET_API g_str_assign(gchar* self, const gchar* other);
 
 
 /**
@@ -85,7 +110,7 @@ gchar* g_str_assign(gchar* self, const gchar* other);
  *
  *  @return self 内のポインタ。
  */
-const gchar* g_strchr(const gchar* self, size_t n, gchar found_ch);
+const gchar* GARNET_API g_strchr(const gchar* self, size_t n, gchar found_ch);
 
 
 /**
@@ -96,7 +121,7 @@ const gchar* g_strchr(const gchar* self, size_t n, gchar found_ch);
  *
  *  @return self 内のポインタ。
  */
-const gchar* g_strrchr(const gchar* self, size_t n, gchar found_ch);
+const gchar* GARNET_API g_strrchr(const gchar* self, size_t n, gchar found_ch);
 
 
 /**
@@ -106,7 +131,7 @@ const gchar* g_strrchr(const gchar* self, size_t n, gchar found_ch);
  *
  *  @return self 内のポインタ。
  */
-const gchar* g_str_find(const gchar* self, const gchar* search_text);
+const gchar* GARNET_API g_str_find(const gchar* self, const gchar* search_text);
 
 
 /**
@@ -116,17 +141,27 @@ const gchar* g_str_find(const gchar* self, const gchar* search_text);
  *
  *  @return self 内のポインタ。
  */
-const gchar* g_str_find_last_of(const gchar* self, const gchar* search_text);
+const gchar* GARNET_API g_str_find_last_of(const gchar* self, const gchar* search_text);
 
 
 /**
- * 指定された文字列に search_text が含まれていたらその位置を返します。
+ * 指定された文字列に search_text が含まれていたらその最初の位置を返します。
  *  @param [in] self        検索する文字列。
  *  @param [in] search_text 検索したい文字列。
  *
  *  @return self 内の位置。
  */
-gint g_str_index_of(const gchar* self, const gchar* search_text);
+gint GARNET_API g_str_index_of(const gchar* self, const gchar* search_text);
+
+
+/**
+ * 指定された文字列に search_text が含まれていたらその最後の位置を返します。
+ *  @param [in] self        検索する文字列。
+ *  @param [in] search_text 検索したい文字列。
+ *
+ *  @return self 内の位置。
+ */
+gint GARNET_API g_str_last_index_of(const gchar* self, const gchar* search_text);
 
 
 /**
@@ -136,7 +171,7 @@ gint g_str_index_of(const gchar* self, const gchar* search_text);
  *
  *  @return 同じなら真。
  */
-gboolean g_str_equal(const gchar* left, const gchar* right);
+gboolean GARNET_API g_str_equal(const gchar* left, const gchar* right);
 /**
  * left と right が同じ内容かどうか判別します。
  *  @param [in] left        判別する文字列左辺。
@@ -146,7 +181,7 @@ gboolean g_str_equal(const gchar* left, const gchar* right);
  *
  *  @return 同じなら真。
  */
-gboolean g_str_equal_len(const gchar* left, size_t left_len, const gchar* right, size_t right_len);
+gboolean GARNET_API g_str_equal_len(const gchar* left, size_t left_len, const gchar* right, size_t right_len);
 
 
 /**
@@ -156,7 +191,7 @@ gboolean g_str_equal_len(const gchar* left, size_t left_len, const gchar* right,
  *
  *  @return 含まれていたら真。
  */
-gboolean g_str_startswith(const gchar* self, const gchar* prefix);
+gboolean GARNET_API g_str_startswith(const gchar* self, const gchar* prefix);
 
 
 /**
@@ -169,7 +204,7 @@ gboolean g_str_startswith(const gchar* self, const gchar* prefix);
  *  @note
  *      割り当てられたバッファより長くなる場合、バッファを伸ばすことはやっていません。
  */
-gchar* g_str_append(gchar* self, const gchar* appendee);
+gchar* GARNET_API g_str_append(gchar* self, const gchar* appendee);
 
 
 /**
@@ -182,7 +217,7 @@ gchar* g_str_append(gchar* self, const gchar* appendee);
  *  @note
  *      割り当てられたバッファより長くなる場合、バッファを伸ばすことはやっていません。
  */
-gchar* g_str_appendch(gchar* self, gchar appendee);
+gchar* GARNET_API g_str_appendch(gchar* self, gchar appendee);
 
 
 /**
@@ -192,39 +227,45 @@ gchar* g_str_appendch(gchar* self, gchar appendee);
  *
  *  @return self と right を結合した新しい文字列。
  */
-gchar* g_str_concat(const gchar* self, const gchar* right);
+gchar* GARNET_API g_str_concat(const gchar* self, const gchar* right);
 
 
 /**
  * self の n 文字目を返します。
  */
-gint g_str_char_at(const gchar* self, gint n);
+gint GARNET_API g_str_char_at(const gchar* self, gint n);
 
 
 /**
  * self の n 文字目から m 文字目までを返します。
  */
-gchar* g_str_slice(const gchar* self, gint n, gint m);
+gchar* GARNET_API g_str_slice(const gchar* self, gint n, gint m);
+
+
+/**
+ * self の n 文字目から末尾までを返します。
+ */
+gchar* GARNET_API g_str_slice_last(const gchar* self, gint n);
 
 
 /**
  * self に含まれる sub_string を replacement で置換した後の新しい文字列を返しま
  * す。
  */
-gchar* g_str_replace( const gchar*  self,
-                      const gchar*  sub_string,
-                      const gchar*  replacement
-                      );
+gchar* GARNET_API g_str_replace( const gchar*  self,
+                                 const gchar*  sub_string,
+                                 const gchar*  replacement
+                                 );
 
 
 /**
  * self に含まれる sub_string を replacement ですべて置換した後の新しい文字列を
  * 返します。
  */
-gchar* g_str_replace_all( const gchar*  self,
-                          const gchar*  sub_string,
-                          const gchar*  replacement
-                          );
+gchar* GARNET_API g_str_replace_all( const gchar*  self,
+                                     const gchar*  sub_string,
+                                     const gchar*  replacement
+                                     );
 
 
 #endif  /* garnet_gstring_h */

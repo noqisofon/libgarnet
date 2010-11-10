@@ -11,6 +11,7 @@
 #include <garnet/glogger.h>
 #include <garnet/gstring.h>
 #include <garnet/gthread.h>
+#include <garnet/gbitset.h>
 
 
 #endif  /* garnet_garnet_h */

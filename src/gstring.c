@@ -17,9 +17,28 @@
 
 /**
  * @def STRING_SENTINEL
- * 文字列の終を示す文字です。
+ * 文字列の終わりを示す文字です。
  */
 #define     STRING_SENTINEL     '\0'
+
+
+/**
+ *
+ */
+#define     SPUT(str, i, ch)    str[i] = ch
+
+
+/**
+ * @def EOS(str, i)
+ * 文字列の指定された位置に \0 を代入します。
+ */
+#define     EOS(str, i)         SPUT(str, i, STRING_SENTINEL)
+
+
+/**
+ *
+ */
+#define     STR_TRUNCATE(pstr)  *pstr = STRING_SENTINEL
 
 
 /**
@@ -29,7 +48,7 @@ static gchar* g_create_cstring(size_t n);
 
 
 #if 0
-size_t g_strlen(const gchar* self)
+size_t GARNET_API g_strlen(const gchar* self)
 {
     size_t  i = 0;
 
@@ -41,7 +60,7 @@ size_t g_strlen(const gchar* self)
 #endif
 
 
-gchar* g_strdup(const gchar* s)
+gchar* GARNET_API g_strdup(const gchar* s)
 {
     gchar*  result;
     size_t  insize;
@@ -58,7 +77,7 @@ gchar* g_strdup(const gchar* s)
 }
 
 
-gchar* g_strndup(const gchar* s, size_t n)
+gchar* GARNET_API g_strndup(const gchar* s, size_t n)
 {
     gchar           *result, *it;
     const gchar*    stop;
@@ -83,7 +102,7 @@ gchar* g_strndup(const gchar* s, size_t n)
 }
 
 
-gchar* g_strnfill(size_t n, gchar ch)
+gchar* GARNET_API g_strnfill(size_t n, gchar ch)
 {
     gchar    *result, *it, *stop;
 
@@ -104,7 +123,7 @@ gchar* g_strnfill(size_t n, gchar ch)
 }
 
 
-gchar* g_str_assign(gchar* self, const gchar* other)
+gchar* GARNET_API g_str_assign(gchar* self, const gchar* other)
 {
     size_t  other_len   = g_strlen( other );
 
@@ -120,7 +139,7 @@ gchar* g_str_assign(gchar* self, const gchar* other)
 }
 
 
-const gchar* g_strchr(const gchar* self, size_t n, gchar found_ch)
+const gchar* GARNET_API g_strchr(const gchar* self, size_t n, gchar found_ch)
 {
     const gchar*   last = self + n;
 
@@ -132,7 +151,7 @@ const gchar* g_strchr(const gchar* self, size_t n, gchar found_ch)
 }
 
 
-const gchar* g_strrchr(const gchar* s, size_t n, gchar found_ch)
+const gchar* GARNET_API g_strrchr(const gchar* s, size_t n, gchar found_ch)
 {
     const gchar*   it;
 
@@ -144,15 +163,16 @@ const gchar* g_strrchr(const gchar* s, size_t n, gchar found_ch)
 }
 
 
-const gchar* g_str_find(const gchar* self, const gchar* search_text)
+const gchar* GARNET_API g_str_find(const gchar* self, const gchar* search_text)
 {
-    int     i;
-    int     matchc              = 0;
+    gint    i;
+    gint    matchc;
     size_t  search_text_len     = g_strlen( search_text );
 
     if ( search_text_len == 0 )
         return NULL;
 
+    matchc  = 0;
     for ( i = 0; self[i] != STRING_SENTINEL; ++ i ) {
         if ( self[i] == search_text[matchc] )
             ++ matchc;
@@ -164,14 +184,16 @@ const gchar* g_str_find(const gchar* self, const gchar* search_text)
 }
 
 
-const gchar* g_str_find_last_of(const gchar* self, const gchar* search_text)
+const gchar* GARNET_API g_str_find_last_of(const gchar* self, const gchar* search_text)
 {
-    int     i;
-    int     matchc              = 0;
+    gint    i;
+    gint    matchc;
     size_t  search_text_len     = g_strlen( search_text );
 
-    gchar*  p;
+    const gchar*  p;
 
+    matchc  = 0;
+    p       = NULL;
     if ( search_text_len == 0 )
         return NULL;
 
@@ -186,33 +208,61 @@ const gchar* g_str_find_last_of(const gchar* self, const gchar* search_text)
 }
 
 
-int g_str_index_of(const gchar* self, const gchar* search_text)
+gint GARNET_API g_str_index_of(const gchar* self, const gchar* search_text)
 {
-    int     i;
-    int     matchc              = 0;
-    size_t  search_text_len     = g_strlen( search_text );
+    gint    i;
+    gint    matchc;
+    size_t  search_text_len;
 
+    search_text_len     = g_strlen( search_text );
     if ( search_text_len == 0 )
         return -1;
+    
+    matchc  = 0;
+    for ( i = 0; self[i] != STRING_SENTINEL; ++ i ) {
+        if ( self[i] == search_text[matchc] )
+            ++ matchc;
+
+        if ( __STATIC_CAST(size_t, matchc) == search_text_len )
+            return i - __STATIC_CAST(gint, search_text_len - 1);
+    }
+    return -1;
+}
+
+
+gint GARNET_API g_str_last_index_of(const gchar* self, const gchar* search_text)
+{
+    gint    i;
+    gint    matchc;
+    gint    result_index;
+    size_t  search_text_len;
+
+    result_index        = -1;
+    search_text_len     = g_strlen( search_text );
+    if ( search_text_len == 0 )
+        return result_index;
+
+    matchc              = 0;
+    search_text_len     = g_strlen( search_text );
 
     for ( i = 0; self[i] != STRING_SENTINEL; ++ i ) {
         if ( self[i] == search_text[matchc] )
             ++ matchc;
 
         if ( __STATIC_CAST(size_t, matchc) == search_text_len )
-            return i - (search_text_len - 1);
+            result_index = i - __STATIC_CAST(gint, search_text_len - 1);
     }
-    return -1;
+    return result_index;
 }
 
 
-gboolean g_str_equal(const gchar* left, const gchar* right)
+gboolean GARNET_API g_str_equal(const gchar* left, const gchar* right)
 {
     return g_str_equal_len( left, g_strlen( left ), right, g_strlen( right ) );
 }
-gboolean g_str_equal_len(const gchar* left, size_t left_len, const gchar* right, size_t right_len)
+gboolean GARNET_API g_str_equal_len(const gchar* left, size_t left_len, const gchar* right, size_t right_len)
 {
-    int i;
+    size_t  i;
 
     if ( left_len != right_len )
         return false;
@@ -225,7 +275,7 @@ gboolean g_str_equal_len(const gchar* left, size_t left_len, const gchar* right,
 }
 
 
-gboolean g_str_startswith(const gchar* self, const gchar* prefix)
+gboolean GARNET_API g_str_startswith(const gchar* self, const gchar* prefix)
 {
     size_t  self_length     = g_strlen( self );
     size_t  prefix_length   = g_strlen( prefix );
@@ -241,7 +291,7 @@ gboolean g_str_startswith(const gchar* self, const gchar* prefix)
 }
 
 
-gchar* g_str_append(gchar* self, const gchar* appendee)
+gchar* GARNET_API g_str_append(gchar* self, const gchar* appendee)
 {
     gchar*  p;
     size_t  self_len;
@@ -256,7 +306,7 @@ gchar* g_str_append(gchar* self, const gchar* appendee)
 }
 
 
-gchar* g_str_appendch(gchar* self, gchar appendee)
+gchar* GARNET_API g_str_appendch(gchar* self, gchar appendee)
 {
     gchar*   p  = self + g_strlen( self );
 
@@ -266,10 +316,19 @@ gchar* g_str_appendch(gchar* self, gchar appendee)
 }
 
 
-gchar* g_str_concat(const gchar* self, const gchar* right)
+gchar* GARNET_API g_str_concat(const gchar* self, const gchar* right)
 {
     gchar   *ret, *p;
     size_t  self_len, right_len;
+
+    if ( !self || !right ) {
+        if ( !self && right )
+            return g_strdup( right );
+        else if ( self && right )
+            return g_strdup( self );
+        else
+            return NULL;
+    }
 
     self_len    = g_strlen( self );
     right_len   = g_strlen( right );
@@ -282,7 +341,7 @@ gchar* g_str_concat(const gchar* self, const gchar* right)
 }
 
 
-gint g_str_char_at(const gchar* self, gint n)
+gint GARNET_API g_str_char_at(const gchar* self, gint n)
 {
     size_t  len;
 
@@ -293,6 +352,42 @@ gint g_str_char_at(const gchar* self, gint n)
         return -1;
 
     return self[n];
+}
+
+
+gchar* GARNET_API g_str_slice(const gchar* self, gint n, gint m)
+{
+    gchar*  result;
+    size_t  i, self_length, result_length;
+
+    if ( !self )
+        return NULL;
+    self_length = g_strlen( self );
+    if ( n + m < __STATIC_CAST(gint, self_length) )
+        return NULL;
+    if ( n < 0 || m < 0 )
+        return NULL;
+    if ( n > m || n == m )
+        return NULL;
+
+    result_length   = (m - n) + 1;
+    result  = g_create_cstring( result_length );
+
+    for ( i = 0; i < result_length; ++ i ) {
+        if ( self[i + n] == STRING_SENTINEL )
+            break;
+
+        SPUT(result, i, self[i + n]);
+    }
+    EOS(result, i);
+
+    return result;
+}
+
+
+gchar* GARNET_API g_str_slice_last(const gchar* self, gint n)
+{
+    return g_str_slice( self, n, __STATIC_CAST(gint, g_strlen( self ) - 1) );
 }
 
 

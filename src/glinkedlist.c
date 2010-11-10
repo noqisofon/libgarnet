@@ -1,24 +1,17 @@
 #include <stdafx.h>
 
+#include <stddef.h>
+#include <stdint.h>
+
 #include <garnet/galloc.h>
 
 #include <garnet/glinkedlist.h>
 
 
-static GList*  g_list_new(VALUE item)
-{
-    GList*  ret;
-
-    ret = ALLOC(GList);
-    ret->head   = NULL;
-    ret->value  = item;
-    ret->tail   = NULL;
-
-    return ret;
-}
+static GList*  g_list_new(VALUE item);
 
 
-GList* g_list_add(GList* self, VALUE item)
+GList* GARNET_API g_list_add(GList* self, VALUE item)
 {
     GList   *node,  *last;
 
@@ -36,7 +29,7 @@ GList* g_list_add(GList* self, VALUE item)
 }
 
 
-GList* g_list_add_front(GList* self, VALUE item)
+GList* GARNET_API g_list_add_front(GList* self, VALUE item)
 {
     GList   *node,  *first;
 
@@ -54,7 +47,7 @@ GList* g_list_add_front(GList* self, VALUE item)
 }
 
 
-GList* g_list_insert(GList* self, VALUE item, gint position)
+GList* GARNET_API g_list_insert(GList* self, VALUE item, gint position)
 {
     GList   *where, *node;
 
@@ -78,7 +71,7 @@ GList* g_list_insert(GList* self, VALUE item, gint position)
 }
 
 
-GList* g_list_front(GList* self)
+GList* GARNET_API g_list_front(GList* self)
 {
     GList   *p;
 
@@ -93,7 +86,7 @@ GList* g_list_front(GList* self)
 }
 
 
-GList* g_list_behind(GList* self)
+GList* GARNET_API g_list_behind(GList* self)
 {
     GList   *p;
 
@@ -108,7 +101,7 @@ GList* g_list_behind(GList* self)
 }
 
 
-size_t g_list_length(GList* self)
+size_t GARNET_API g_list_length(GList* self)
 {
     GList*  p;
     size_t  len = 0;
@@ -125,7 +118,7 @@ size_t g_list_length(GList* self)
 }
 
 
-GList* g_list_advance(GList* self, gint distance)
+GList* GARNET_API g_list_advance(GList* self, gint distance)
 {
     GList*      p;
     gint     n;
@@ -143,7 +136,7 @@ GList* g_list_advance(GList* self, gint distance)
 }
 
 
-GList* g_list_find(GList* self, VALUE found)
+GList* GARNET_API g_list_find(GList* self, VALUE found)
 {
     GList*      p;
 
@@ -158,7 +151,7 @@ GList* g_list_find(GList* self, VALUE found)
 }
 
 
-void g_list_free(GList* self)
+void GARNET_API g_list_free(GList* self)
 {
     GList*  p;
 
@@ -168,9 +161,22 @@ void g_list_free(GList* self)
     p   = self;
     while ( !p->tail ) {
         if ( p->head )
-            g_free( p->head );
+            g_delete( p->head );
 
         p   = p->tail;
     }
-    g_free( p );
+    g_delete( p );
+}
+
+
+static GList*  g_list_new(VALUE item)
+{
+    GList*  ret;
+
+    ret = g_new(GList,1);
+    ret->head   = NULL;
+    ret->value  = item;
+    ret->tail   = NULL;
+
+    return ret;
 }

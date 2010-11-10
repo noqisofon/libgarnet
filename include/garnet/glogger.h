@@ -6,6 +6,11 @@
 #define garnet_glogger_h
 
 #include <stdint.h>
+#include <stdarg.h>
+
+#ifndef GARNET_DEFINE_GARNET_API
+#   define     GARNET_API      __stdcall
+#endif  /* ndef GARNET_DEFINE_GARNET_API */
 
 #ifndef GARNET_DEFINE_VALUE
 typedef     void*       VALUE;
@@ -72,7 +77,7 @@ typedef enum {
 /**
  * @typedef g_log_functor
  */
-typedef     void    (*g_log_functor)( const gchar*      lor_domain,
+typedef     void    (GARNET_API *g_log_functor)( const gchar*      lor_domain,
                                       LogLevelFlags     lor_level,
                                       const gchar*      message,
                                       VALUE             user_data
@@ -83,7 +88,7 @@ typedef     void    (*g_log_functor)( const gchar*      lor_domain,
  * メッセージを表示します。
  * @since 2010-09-14T14:48:14+0900
  */
-void g_log( const gchar*    lor_domain,
+void GARNET_API g_log( const gchar*    lor_domain,
             LogLevelFlags   lor_level,
             const gchar*    format,
             ...
@@ -94,7 +99,7 @@ void g_log( const gchar*    lor_domain,
  * メッセージを表示します。
  * @since 2010-09-14T14:48:26+0900
  */
-void g_logv( const gchar*   lor_domain,
+void GARNET_API g_logv( const gchar*   lor_domain,
              LogLevelFlags  lor_level,
              const gchar*   format,
              va_list        args
@@ -110,11 +115,11 @@ void g_logv( const gchar*   lor_domain,
 #       define     g_debug(format, ...)         g_log( GARNET_LOG_DOMAIN, LOG_FLAG_DEBUG, format, ##__VA_ARGS__ )
 #       define     g_info(format, ...)          g_log( GARNET_LOG_DOMAIN, LOG_FLAG_INFO, format, ##__VA_ARGS__ )
 #   else
-void g_message(const gchar* format, ...);
-void g_warning(const gchar* format, ...);
-void g_critical(const gchar* format, ...);
-void g_error(const gchar* format, ...);
-void g_info(const gchar* format, ...);
+void GARNET_API g_message(const gchar* format, ...);
+void GARNET_API g_warning(const gchar* format, ...);
+void GARNET_API g_critical(const gchar* format, ...);
+void GARNET_API g_error(const gchar* format, ...);
+void GARNET_API g_info(const gchar* format, ...);
 #   endif  /* defined(_STDC_VERSION) || defined(_MSC_VER) */
 #else
 #   define     g_message(format, ...)
@@ -130,7 +135,7 @@ void g_info(const gchar* format, ...);
  * ログ書き込みハンドラーを設定します。
  * @since 2010-09-14T14:45:31+0900
  */
-guint g_log_set_handler( const gchar*   lor_domain,
+guint GARNET_API g_log_set_handler( const gchar*   lor_domain,
                          LogLevelFlags  lor_levels,
                          g_log_functor  lor_func,
                          VALUE          user_data
@@ -140,7 +145,7 @@ guint g_log_set_handler( const gchar*   lor_domain,
 /**
  * @since 2010-09-14T14:45:40+0900
  */
-void g_log_remove_handler( const gchar* lor_domain,
+void GARNET_API g_log_remove_handler( const gchar* lor_domain,
                            guint        hundler_id
                            );
 
@@ -148,7 +153,7 @@ void g_log_remove_handler( const gchar* lor_domain,
 /**
  * @since 2010-09-14T14:45:58+0900
  */
-void g_log_default_handler( const gchar*    lor_domain,
+void GARNET_API g_log_default_handler( const gchar*    lor_domain,
                             LogLevelFlags   lor_level,
                             const gchar*    message,
                             VALUE           user_data

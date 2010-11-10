@@ -8,6 +8,10 @@
 
 #include <stdint.h>
 
+#ifndef GARNET_DEFINE_GARNET_API
+#   define     GARNET_API      __stdcall
+#endif  /* ndef GARNET_DEFINE_GARNET_API */
+
 
 #ifndef GARNET_DEFINE_VALUE
 typedef     void*       VALUE;
@@ -18,32 +22,32 @@ typedef     void*       VALUE;
 /**
  * size バイトを割り当て、割り当てられたメモリに対するポインタを返します。
  */
-VALUE g_malloc(size_t size);
+VALUE GARNET_API g_malloc(size_t size);
 
 
 /**
  * size * n バイトを割り当て、割り当てられたメモリに対するポインタを返します。
  * @see g_malloc
  */
-VALUE g_malloc2(size_t n, size_t size);
+VALUE GARNET_API g_malloc2(size_t n, size_t size);
 
 
 /**
  * size バイト n 個を割り当て、割り当てられたメモリに対するポインタを返します。
  */
-VALUE g_calloc(size_t n, size_t size);
+VALUE GARNET_API g_calloc(size_t n, size_t size);
 
 
 /**
  * ptr のメモリブロックのサイズを変更し、size バイトにします。
  */
-VALUE g_realloc(VALUE ptr, size_t size);
+VALUE GARNET_API g_realloc(VALUE ptr, size_t size);
 
 
 /**
  * ptr が指すメモリ空間を開放します。
  */
-void g_free(VALUE ptr);
+void GARNET_API g_free(VALUE ptr);
 
 
 /**

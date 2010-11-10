@@ -56,3 +56,5 @@
 *.xml
 *.zip
 tags
+*.diff
+*.ip

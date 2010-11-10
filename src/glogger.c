@@ -12,10 +12,13 @@ const gchar*            g_log_domain_garnet         = "garnet";
 const gchar*            g_log_domain_garnet_module  = "garnet.module";
 
 
+static const char* log_level_filter(LogLevelFlags log_level);
+
+
 static g_log_functor    local_log_func              = g_log_default_handler;
 
 
-void g_log( const gchar*    log_domain,
+void GARNET_API g_log( const gchar*    log_domain,
             LogLevelFlags   log_level,
             const gchar*    format,
             ...
@@ -31,7 +34,7 @@ void g_log( const gchar*    log_domain,
 
 
 #define     MESSAGE_BUFFER_LENGTH       1024 * 2
-void g_logv( const gchar*    log_domain,
+void GARNET_API g_logv( const gchar*    log_domain,
              LogLevelFlags   log_level,
              const gchar*    format,
              va_list         arguments
@@ -46,7 +49,7 @@ void g_logv( const gchar*    log_domain,
 
 
 #if !defined(_STDC_VERSION) && !defined(_MSC_VER)
-void g_message(const gchar* format, ...)
+void GARNET_API g_message(const gchar* format, ...)
 {
     va_list     arguments;
     va_start( arguments, format );
@@ -57,7 +60,7 @@ void g_message(const gchar* format, ...)
 }
 
 
-void g_warning(const gchar* format, ...)
+void GARNET_API g_warning(const gchar* format, ...)
 {
     va_list     arguments;
     va_start( arguments, format );
@@ -68,7 +71,7 @@ void g_warning(const gchar* format, ...)
 }
 
 
-void g_critical(const gchar* format, ...)
+void GARNET_API g_critical(const gchar* format, ...)
 {
     va_list     arguments;
     va_start( arguments, format );
@@ -79,7 +82,7 @@ void g_critical(const gchar* format, ...)
 }
 
 
-void g_error(const gchar* format, ...)
+void GARNET_API g_error(const gchar* format, ...)
 {
     va_list     arguments;
     va_start( arguments, format );
@@ -90,7 +93,7 @@ void g_error(const gchar* format, ...)
 }
 
 
-void g_info(const gchar* format, ...)
+void GARNET_API g_info(const gchar* format, ...)
 {
     va_list     arguments;
     va_start( arguments, format );
@@ -102,7 +105,7 @@ void g_info(const gchar* format, ...)
 #endif  /* !defined(_STDC_VERSION) && !defined(_MSC_VER) */
 
 
-guint g_log_set_handler( const gchar*    log_domain,
+guint GARNET_API g_log_set_handler( const gchar*    log_domain,
                             LogLevelFlags   log_levels,
                             g_log_functor   log_func,
                             VALUE           useg_data
@@ -112,47 +115,14 @@ guint g_log_set_handler( const gchar*    log_domain,
 }
 
 
-void g_log_remove_handler( const gchar*     log_domain,
+void GARNET_API g_log_remove_handler( const gchar*     log_domain,
                            guint         hundleg_id
                            )
 {
 }
 
 
-/**
- * @since 2010-09-14
- */
-static const char* log_level_filter(LogLevelFlags log_level)
-{
-    switch ( log_level ) {
-     case LOG_FLAG_FATAL:
-        return "FATAL";
-
-     case LOG_FLAG_ERROR:
-        return "ERROR";
-
-     case LOG_FLAG_CRITICAL:
-        return "CRITICAL";
-
-     case LOG_FLAG_WARNING:
-        return "WARNING";
-
-     case LOG_FLAG_MESSAGE:
-        return "MESSAGE";
-
-     case LOG_FLAG_INFO:
-        return "INFO";
-
-     case LOG_FLAG_DEBUG:
-        return "DEBUG";
-
-     default:
-        return "";
-    }
-}
-
-
-void g_log_default_handler( const gchar*    log_domain,
+void GARNET_API g_log_default_handler( const gchar*    log_domain,
                             LogLevelFlags   log_level,
                             const gchar*    message,
                             VALUE           useg_data
@@ -190,5 +160,38 @@ void g_log_default_handler( const gchar*    log_domain,
                  );
 
         fclose( output );
+    }
+}
+
+
+/**
+ * @since 2010-09-14
+ */
+static const char* log_level_filter(LogLevelFlags log_level)
+{
+    switch ( log_level ) {
+     case LOG_FLAG_FATAL:
+        return "FATAL";
+
+     case LOG_FLAG_ERROR:
+        return "ERROR";
+
+     case LOG_FLAG_CRITICAL:
+        return "CRITICAL";
+
+     case LOG_FLAG_WARNING:
+        return "WARNING";
+
+     case LOG_FLAG_MESSAGE:
+        return "MESSAGE";
+
+     case LOG_FLAG_INFO:
+        return "INFO";
+
+     case LOG_FLAG_DEBUG:
+        return "DEBUG";
+
+     default:
+        return "";
     }
 }

@@ -6,7 +6,7 @@
 #ifndef garnet_gthread_h
 #define garnet_gthread_h
 
-#include <garnet/_garnet.h>
+#include <stdlib.h>
 
 
 #define      g_exit      exit

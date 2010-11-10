@@ -1,5 +1,6 @@
 #include <stdafx.h>
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <memory.h>
@@ -12,7 +13,7 @@ static void g_malloc_failed(size_t request_size);
 static void g_realloc_failed(VALUE base_p, size_t request_size);
 
 
-VALUE g_malloc(size_t size)
+VALUE GARNET_API g_malloc(size_t size)
 {
     VALUE   newmem;
 
@@ -26,7 +27,7 @@ VALUE g_malloc(size_t size)
 }
 
 
-VALUE g_malloc2(size_t n, size_t size)
+VALUE GARNET_API g_malloc2(size_t n, size_t size)
 {
     if ( n == 0 )
         n       = 1;
@@ -37,7 +38,7 @@ VALUE g_malloc2(size_t n, size_t size)
 }
 
 
-VALUE g_calloc(size_t n, size_t size)
+VALUE GARNET_API g_calloc(size_t n, size_t size)
 {
     VALUE   newmem;
 
@@ -51,7 +52,7 @@ VALUE g_calloc(size_t n, size_t size)
 }
 
 
-VALUE g_realloc(VALUE p, size_t size)
+VALUE GARNET_API g_realloc(VALUE p, size_t size)
 {
     VALUE   newmem;
 
@@ -65,7 +66,7 @@ VALUE g_realloc(VALUE p, size_t size)
 }
 
 
-void g_free(VALUE p)
+void GARNET_API g_free(VALUE p)
 {
     free( p );
     p   = NULL;

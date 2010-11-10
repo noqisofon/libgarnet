@@ -11,13 +11,15 @@ src0        = $(srcdir)/galloc.c
 src1        = $(srcdir)/glinkedlist.c
 src2        = $(srcdir)/glogger.c
 src3        = $(srcdir)/gstring.c
+src4        = $(srcdir)/gbitset.c
 
 obj0        = $(intdir)/galloc.o
 obj1        = $(intdir)/glinkedlist.o
 obj2        = $(intdir)/glogger.o
 obj3        = $(intdir)/gstring.o
+obj4        = $(intdir)/gbitset.o
 
-objs        = $(obj0) $(obj1) $(obj2) $(obj3)
+objs        = $(obj0) $(obj1) $(obj2) $(obj3) $(obj4)
 
 target_ext  = a
 target      = $(outdir)/lib$(projectname).$(target_ext)
@@ -62,6 +64,10 @@ $(obj2): $(src2)
 	$(cc) $(cflags) -c $< -o $@
 
 $(obj3): $(src3)
+	@if [ ! -d $(intdir) ]; then mkdir -vp $(intdir); fi
+	$(cc) $(cflags) -c $< -o $@
+
+$(obj4): $(src4)
 	@if [ ! -d $(intdir) ]; then mkdir -vp $(intdir); fi
 	$(cc) $(cflags) -c $< -o $@
 
