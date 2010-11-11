@@ -40,6 +40,7 @@
 *.resources
 *.rsp
 *.sbr
+*.sdf
 *.settings
 *.sh
 *.suo
