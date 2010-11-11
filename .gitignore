@@ -5,12 +5,15 @@ tags
 *.exe
 *.pdb
 *.dll
+*.dump
+*.diff
 *.bat
 *.application
 *.conf
 *.cache
 *.suo
 *.obj
+*.o
 *.user
 *.rb
 *.lib
@@ -21,7 +24,7 @@ tags
 *.ncb
 *.html
 *.ilk
-+.ipch
+*.ipch
 *.res
 *.manifest
 *.pch
@@ -58,4 +61,5 @@ uninstall.ini
 *.bsc
 *.sbr
 *.xml
+*.ver
 *.lastbuildstate
