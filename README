@@ -1,4 +1,4 @@
-﻿* libgarnet
+* libgarnet
 
 
 ** libgarnet とは？
@@ -18,4 +18,4 @@ libgarnet は Glib ライクな Windows 用のユーティリティライブラ�
 created at: 2010-10-14T15:55:05+0900
 local variables:
     writing mode: wiki-syntax
-end:
+\end
