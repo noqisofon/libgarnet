@@ -1,6 +1,26 @@
+ï»¿/* -*- encoding: utf-8; -*- */
 /**
  * @file    glogger.h
  * @since   2010-07-27T08:55:17
+ */
+/*
+
+    Copyright (c) %year% %full-author% %author-email%
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by 
+    the Free Software Foundation; either version 3 of the License,
+    or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful, 
+    but WITHOUT ANY WARRANTY; without even the implied warranty
+    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+
+    $Id glogger.h %timestamp% %author% $
  */
 #ifndef garnet_glogger_h
 #define garnet_glogger_h
@@ -85,7 +105,7 @@ typedef     void    (GARNET_API *g_log_functor)( const gchar*      lor_domain,
 
 
 /**
- * ƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Ü‚·B
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
  * @since 2010-09-14T14:48:14+0900
  */
 void GARNET_API g_log( const gchar*    lor_domain,
@@ -96,7 +116,7 @@ void GARNET_API g_log( const gchar*    lor_domain,
 
 
 /**
- * ƒƒbƒZ[ƒW‚ğ•\¦‚µ‚Ü‚·B
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
  * @since 2010-09-14T14:48:26+0900
  */
 void GARNET_API g_logv( const gchar*   lor_domain,
@@ -132,7 +152,7 @@ void GARNET_API g_info(const gchar* format, ...);
 
 
 /**
- * ƒƒO‘‚«‚İƒnƒ“ƒhƒ‰[‚ğİ’è‚µ‚Ü‚·B
+ * ãƒ­ã‚°æ›¸ãè¾¼ã¿ãƒãƒ³ãƒ‰ãƒ©ãƒ¼ã‚’è¨­å®šã—ã¾ã™ã€‚
  * @since 2010-09-14T14:45:31+0900
  */
 guint GARNET_API g_log_set_handler( const gchar*   lor_domain,

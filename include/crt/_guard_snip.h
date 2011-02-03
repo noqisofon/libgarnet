@@ -1,3 +1,27 @@
+/* -*- encoding: utf-8; -*- */
+/**
+ * @file _guard_snip.h
+ * @since %create-timestamp%
+ * 
+ */
+/*
+    Copyright (c) %year% %full-author% %author-email%
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by 
+    the Free Software Foundation; either version 3 of the License,
+    or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful, 
+    but WITHOUT ANY WARRANTY; without even the implied warranty
+    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+
+    $Id _guard_snip.h %timestamp% %author% $
+ */
 #ifndef garnet_crt__err_handle_h
 #define garnet_crt__err_handle_h
 
@@ -13,16 +37,16 @@
 
 /**
  * @def GARNET_VALIDATE_STRTRUNCATE_RETURN_ERRCODE
- * GARNET_VALIDATE_RETURN_ERRCODE ‚Ì•¶š—ñØ‚èÌ‚Äƒo[ƒWƒ‡ƒ“‚Å‚·B
- * @par •¶š—ñØ‚èÌ‚Äƒo[ƒWƒ‡ƒ“‚Á‚ÄH
- * <p>‚ ‚é•¶š—ñ‘€ìŠÖ”‚Å‚ÍAƒGƒ‰[‚É str_truncate ‚ğs‚¤‚à‚Ì‚ª‚ ‚è‚Ü‚·B<br />
- * ‚»‚Ìê‡‚Ég—p‚³‚ê‚Ü‚·B</p>
+ * GARNET_VALIDATE_RETURN_ERRCODE ã®æ–‡å­—åˆ—åˆ‡ã‚Šæ¨ã¦ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã™ã€‚
+ * @par æ–‡å­—åˆ—åˆ‡ã‚Šæ¨ã¦ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã£ã¦ï¼Ÿ
+ * <p>ã‚ã‚‹æ–‡å­—åˆ—æ“ä½œé–¢æ•°ã§ã¯ã€ã‚¨ãƒ©ãƒ¼æ™‚ã« str_truncate ã‚’è¡Œã†ã‚‚ã®ãŒã‚ã‚Šã¾ã™ã€‚<br />
+ * ãã®å ´åˆã«ä½¿ç”¨ã•ã‚Œã¾ã™ã€‚</p>
  */
 
 
 /**
  * @def GARNET_VALIDATE_RETURN_ERRCODE
- * expr ‚ª—LŒø‰»‚Ç‚¤‚©‚ğ”»•Ê‚µA^‚È‚ç err ‚ğ•Ô‚·ƒ}ƒNƒƒXƒjƒyƒbƒg‚Å‚·B
+ * expr ãŒæœ‰åŠ¹åŒ–ã©ã†ã‹ã‚’åˆ¤åˆ¥ã—ã€çœŸãªã‚‰ err ã‚’è¿”ã™ãƒã‚¯ãƒ­ã‚¹ãƒ‹ãƒšãƒƒãƒˆã§ã™ã€‚
  */
 #define     GARNET_VALIDATE_RETURN_ERRCODE(expr, err)                   \
     {                                                                   \

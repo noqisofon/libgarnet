@@ -1,7 +1,27 @@
+ï»¿/* -*- encoding: utf-8; -*- */
 /**
  * @file    gstring.h
- * @brief   •¶š—ñ—pŠÖ”ƒ‚ƒWƒ…[ƒ‹B
+ * @brief   æ–‡å­—åˆ—ç”¨é–¢æ•°ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã€‚
  * @since   2010-07-27T08:41:24
+ */
+/*
+
+    Copyright (c) %year% %full-author% %author-email%
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by 
+    the Free Software Foundation; either version 3 of the License,
+    or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful, 
+    but WITHOUT ANY WARRANTY; without even the implied warranty
+    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+
+    $Id gstring.h %timestamp% %author% $
  */
 #ifndef garnet_gstring_h
 #define garnet_gstring_h
@@ -35,13 +55,13 @@ typedef     bool        gboolean;
 
 #if 0
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚Ì’·‚³‚ğ•Ô‚µ‚Ü‚·B
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã®é•·ã•ã‚’è¿”ã—ã¾ã™ã€‚
  */
 size_t GARNET_API g_strlen(const gchar* self);
 #else
 /**
  * @def g_strlen
- * w’è‚³‚ê‚½•¶š—ñ‚Ì’·‚³‚ğ•Ô‚µ‚Ü‚·B
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã®é•·ã•ã‚’è¿”ã—ã¾ã™ã€‚
  */
 #   define     g_strlen        strlen
 #endif
@@ -53,203 +73,203 @@ size_t GARNET_API g_strlen(const gchar* self);
 
 
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚Ì•¡»‚ğ•Ô‚µ‚Ü‚·B
- *  @param [in] self    •¡»‚·‚é•¶š—ñB
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã®è¤‡è£½ã‚’è¿”ã—ã¾ã™ã€‚
+ *  @param [in] self    è¤‡è£½ã™ã‚‹æ–‡å­—åˆ—ã€‚
  *
- *  @return •¡»‚³‚ê‚½•¶š—ñB
+ *  @return è¤‡è£½ã•ã‚ŒãŸæ–‡å­—åˆ—ã€‚
  *
- *  @note •¡»‚³‚ê‚½•¶š—ñ‚Íg‚¢I‚í‚Á‚½‚ç g_free ŠÖ”‚ÅŠJ•ú‚µ‚Ä‚­‚¾‚³‚¢B
+ *  @note è¤‡è£½ã•ã‚ŒãŸæ–‡å­—åˆ—ã¯ä½¿ã„çµ‚ã‚ã£ãŸã‚‰ g_free é–¢æ•°ã§é–‹æ”¾ã—ã¦ãã ã•ã„ã€‚
  */
 gchar* GARNET_API g_strdup(const gchar* self);
 
 
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚Ì n •¶š–Ú‚Ü‚Å‚Ì•¡»‚ğ•Ô‚µ‚Ü‚·B
- *  @param [in] self    •¡»‚·‚é•¶š—ñB
- *  @param [in] n       •¡»‚·‚é•¶š”B
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã® n æ–‡å­—ç›®ã¾ã§ã®è¤‡è£½ã‚’è¿”ã—ã¾ã™ã€‚
+ *  @param [in] self    è¤‡è£½ã™ã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param [in] n       è¤‡è£½ã™ã‚‹æ–‡å­—æ•°ã€‚
  *
- *  @retuen •¡»‚³‚ê‚½•¶š—ñB
+ *  @retuen è¤‡è£½ã•ã‚ŒãŸæ–‡å­—åˆ—ã€‚
  *
- *  @note •¡»‚³‚ê‚½•¶š—ñ‚Íg‚¢I‚í‚Á‚½‚ç g_free ŠÖ”‚ÅŠJ•ú‚µ‚Ä‚­‚¾‚³‚¢B
+ *  @note è¤‡è£½ã•ã‚ŒãŸæ–‡å­—åˆ—ã¯ä½¿ã„çµ‚ã‚ã£ãŸã‚‰ g_free é–¢æ•°ã§é–‹æ”¾ã—ã¦ãã ã•ã„ã€‚
  */
 gchar* GARNET_API g_strndup(const gchar* self, size_t n);
 
 
 /**
- * w’è‚³‚ê‚½•¶š‚ğ n •¶š‚Å\¬‚³‚ê‚½•¶š—ñ‚ğ•Ô‚µ‚Ü‚·B
- *  @param [in] n           •¶š—ñ‚Ì’·‚³B
- *  @param [in] filled_ch   \¬‚·‚é•¶š—ñB
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—ã‚’ n æ–‡å­—ã§æ§‹æˆã•ã‚ŒãŸæ–‡å­—åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
+ *  @param [in] n           æ–‡å­—åˆ—ã®é•·ã•ã€‚
+ *  @param [in] filled_ch   æ§‹æˆã™ã‚‹æ–‡å­—åˆ—ã€‚
  *
- *  @return w’è‚µ‚½•¶š‚ğ n •¶š‚Å\¬‚³‚ê‚½•¶š—ñ
+ *  @return æŒ‡å®šã—ãŸæ–‡å­—ã‚’ n æ–‡å­—ã§æ§‹æˆã•ã‚ŒãŸæ–‡å­—åˆ—
  *
  * @note
- *      •Ô‚³‚ê‚½•¶š—ñ‚Íg‚¢I‚í‚Á‚½‚ç g_free ŠÖ”‚ÅŠJ•ú‚µ‚Ä‚­‚¾‚³‚¢B
+ *      è¿”ã•ã‚ŒãŸæ–‡å­—åˆ—ã¯ä½¿ã„çµ‚ã‚ã£ãŸã‚‰ g_free é–¢æ•°ã§é–‹æ”¾ã—ã¦ãã ã•ã„ã€‚
  */
 gchar* GARNET_API g_strnfill(size_t n, gchar filled_ch);
 
 
 /**
- * self ‚É other ‚ğŠ„‚è“–‚Ä‚Ü‚·B
- *  @param [in,out] self    Š„‚è“–‚Ä‚½‚¢•¶š—ñB
- *  @param [in]     other   Š„‚è“–‚Ä‚é•¶š—ñB
+ * self ã« other ã‚’å‰²ã‚Šå½“ã¦ã¾ã™ã€‚
+ *  @param [in,out] self    å‰²ã‚Šå½“ã¦ãŸã„æ–‡å­—åˆ—ã€‚
+ *  @param [in]     other   å‰²ã‚Šå½“ã¦ã‚‹æ–‡å­—åˆ—ã€‚
  *
- *  @return Š„‚è“–‚Ä‚ç‚ê‚½‚ ‚Æ‚Ì selfB
+ *  @return å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸã‚ã¨ã® selfã€‚
  *
  *  @note
- *      other ‚ª self ‚æ‚è’·‚¢ê‡A•Ô‚³‚ê‚½ self ‚ª“¯‚¶ƒAƒhƒŒƒX‚Å‚Í‚ ‚è‚Ü‚¹‚ñB
+ *      other ãŒ self ã‚ˆã‚Šé•·ã„å ´åˆã€è¿”ã•ã‚ŒãŸ self ãŒåŒã˜ã‚¢ãƒ‰ãƒ¬ã‚¹ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
  */
 gchar* GARNET_API g_str_assign(gchar* self, const gchar* other);
 
 
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚©‚ç•¶š‚ğŒŸõ‚µA‚»‚ÌˆÊ’u‚ğƒ|ƒCƒ“ƒ^‚Å•Ô‚µ‚Ü‚·B
- *  @param [in] self        ŒŸõ‚·‚é•¶š—ñB
- *  @param [in] n           ŒŸõ‚·‚é•¶š—ñ‚Ì’·‚³B
- *  @param [in] found_ch    ŒŸõ‚µ‚½‚¢•¶šB
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‹ã‚‰æ–‡å­—ã‚’æ¤œç´¢ã—ã€ãã®ä½ç½®ã‚’ãƒã‚¤ãƒ³ã‚¿ã§è¿”ã—ã¾ã™ã€‚
+ *  @param [in] self        æ¤œç´¢ã™ã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param [in] n           æ¤œç´¢ã™ã‚‹æ–‡å­—åˆ—ã®é•·ã•ã€‚
+ *  @param [in] found_ch    æ¤œç´¢ã—ãŸã„æ–‡å­—ã€‚
  *
- *  @return self “à‚Ìƒ|ƒCƒ“ƒ^B
+ *  @return self å†…ã®ãƒã‚¤ãƒ³ã‚¿ã€‚
  */
 const gchar* GARNET_API g_strchr(const gchar* self, size_t n, gchar found_ch);
 
 
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚©‚ç•¶š‚ğ‹t•ûŒü‚©‚çŒŸõ‚µA‚»‚ÌˆÊ’u‚ğƒ|ƒCƒ“ƒ^‚Å•Ô‚µ‚Ü‚·B
- *  @param [in] self        ŒŸõ‚·‚é•¶š—ñB
- *  @param [in] n           ŒŸõ‚·‚é•¶š—ñ‚Ì’·‚³B
- *  @param [in] found_ch    ŒŸõ‚µ‚½‚¢•¶šB
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã‹ã‚‰æ–‡å­—ã‚’é€†æ–¹å‘ã‹ã‚‰æ¤œç´¢ã—ã€ãã®ä½ç½®ã‚’ãƒã‚¤ãƒ³ã‚¿ã§è¿”ã—ã¾ã™ã€‚
+ *  @param [in] self        æ¤œç´¢ã™ã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param [in] n           æ¤œç´¢ã™ã‚‹æ–‡å­—åˆ—ã®é•·ã•ã€‚
+ *  @param [in] found_ch    æ¤œç´¢ã—ãŸã„æ–‡å­—ã€‚
  *
- *  @return self “à‚Ìƒ|ƒCƒ“ƒ^B
+ *  @return self å†…ã®ãƒã‚¤ãƒ³ã‚¿ã€‚
  */
 const gchar* GARNET_API g_strrchr(const gchar* self, size_t n, gchar found_ch);
 
 
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚É search_text ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚½‚ç‚»‚ÌÅ‰‚ÌˆÊ’u‚ğƒ|ƒCƒ“ƒ^‚Å•Ô‚µ‚Ü‚·B
- *  @param [in] self        ŒŸõ‚·‚é•¶š—ñB
- *  @param [in] search_text ŒŸõ‚µ‚½‚¢•¶š—ñB
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã« search_text ãŒå«ã¾ã‚Œã¦ã„ãŸã‚‰ãã®æœ€åˆã®ä½ç½®ã‚’ãƒã‚¤ãƒ³ã‚¿ã§è¿”ã—ã¾ã™ã€‚
+ *  @param [in] self        æ¤œç´¢ã™ã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param [in] search_text æ¤œç´¢ã—ãŸã„æ–‡å­—åˆ—ã€‚
  *
- *  @return self “à‚Ìƒ|ƒCƒ“ƒ^B
+ *  @return self å†…ã®ãƒã‚¤ãƒ³ã‚¿ã€‚
  */
 const gchar* GARNET_API g_str_find(const gchar* self, const gchar* search_text);
 
 
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚É search_text ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚½‚ç‚»‚ÌÅŒã‚ÌˆÊ’u‚ğƒ|ƒCƒ“ƒ^‚Å•Ô‚µ‚Ü‚·B
- *  @param [in] self        ŒŸõ‚·‚é•¶š—ñB
- *  @param [in] search_text ŒŸõ‚µ‚½‚¢•¶š—ñB
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã« search_text ãŒå«ã¾ã‚Œã¦ã„ãŸã‚‰ãã®æœ€å¾Œã®ä½ç½®ã‚’ãƒã‚¤ãƒ³ã‚¿ã§è¿”ã—ã¾ã™ã€‚
+ *  @param [in] self        æ¤œç´¢ã™ã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param [in] search_text æ¤œç´¢ã—ãŸã„æ–‡å­—åˆ—ã€‚
  *
- *  @return self “à‚Ìƒ|ƒCƒ“ƒ^B
+ *  @return self å†…ã®ãƒã‚¤ãƒ³ã‚¿ã€‚
  */
 const gchar* GARNET_API g_str_find_last_of(const gchar* self, const gchar* search_text);
 
 
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚É search_text ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚½‚ç‚»‚ÌÅ‰‚ÌˆÊ’u‚ğ•Ô‚µ‚Ü‚·B
- *  @param [in] self        ŒŸõ‚·‚é•¶š—ñB
- *  @param [in] search_text ŒŸõ‚µ‚½‚¢•¶š—ñB
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã« search_text ãŒå«ã¾ã‚Œã¦ã„ãŸã‚‰ãã®æœ€åˆã®ä½ç½®ã‚’è¿”ã—ã¾ã™ã€‚
+ *  @param [in] self        æ¤œç´¢ã™ã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param [in] search_text æ¤œç´¢ã—ãŸã„æ–‡å­—åˆ—ã€‚
  *
- *  @return self “à‚ÌˆÊ’uB
+ *  @return self å†…ã®ä½ç½®ã€‚
  */
 gint GARNET_API g_str_index_of(const gchar* self, const gchar* search_text);
 
 
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚É search_text ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚½‚ç‚»‚ÌÅŒã‚ÌˆÊ’u‚ğ•Ô‚µ‚Ü‚·B
- *  @param [in] self        ŒŸõ‚·‚é•¶š—ñB
- *  @param [in] search_text ŒŸõ‚µ‚½‚¢•¶š—ñB
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã« search_text ãŒå«ã¾ã‚Œã¦ã„ãŸã‚‰ãã®æœ€å¾Œã®ä½ç½®ã‚’è¿”ã—ã¾ã™ã€‚
+ *  @param [in] self        æ¤œç´¢ã™ã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param [in] search_text æ¤œç´¢ã—ãŸã„æ–‡å­—åˆ—ã€‚
  *
- *  @return self “à‚ÌˆÊ’uB
+ *  @return self å†…ã®ä½ç½®ã€‚
  */
 gint GARNET_API g_str_last_index_of(const gchar* self, const gchar* search_text);
 
 
 /**
- * left ‚Æ right ‚ª“¯‚¶“à—e‚©‚Ç‚¤‚©”»•Ê‚µ‚Ü‚·B
- *  @param [in] left    ”»•Ê‚·‚é•¶š—ñ¶•ÓB
- *  @param [in] right   ”»•Ê‚·‚é•¶š—ñ‰E•ÓB
+ * left ã¨ right ãŒåŒã˜å†…å®¹ã‹ã©ã†ã‹åˆ¤åˆ¥ã—ã¾ã™ã€‚
+ *  @param [in] left    åˆ¤åˆ¥ã™ã‚‹æ–‡å­—åˆ—å·¦è¾ºã€‚
+ *  @param [in] right   åˆ¤åˆ¥ã™ã‚‹æ–‡å­—åˆ—å³è¾ºã€‚
  *
- *  @return “¯‚¶‚È‚ç^B
+ *  @return åŒã˜ãªã‚‰çœŸã€‚
  */
 gboolean GARNET_API g_str_equal(const gchar* left, const gchar* right);
 /**
- * left ‚Æ right ‚ª“¯‚¶“à—e‚©‚Ç‚¤‚©”»•Ê‚µ‚Ü‚·B
- *  @param [in] left        ”»•Ê‚·‚é•¶š—ñ¶•ÓB
- *  @param [in] left_len    left ‚Ì•¶š—ñ‚Ì’·‚³B
- *  @param [in] right       ”»•Ê‚·‚é•¶š—ñ‰E•ÓB
- *  @param [in] right_len   right ‚Ì•¶š—ñ‚Ì’·‚³B
+ * left ã¨ right ãŒåŒã˜å†…å®¹ã‹ã©ã†ã‹åˆ¤åˆ¥ã—ã¾ã™ã€‚
+ *  @param [in] left        åˆ¤åˆ¥ã™ã‚‹æ–‡å­—åˆ—å·¦è¾ºã€‚
+ *  @param [in] left_len    left ã®æ–‡å­—åˆ—ã®é•·ã•ã€‚
+ *  @param [in] right       åˆ¤åˆ¥ã™ã‚‹æ–‡å­—åˆ—å³è¾ºã€‚
+ *  @param [in] right_len   right ã®æ–‡å­—åˆ—ã®é•·ã•ã€‚
  *
- *  @return “¯‚¶‚È‚ç^B
+ *  @return åŒã˜ãªã‚‰çœŸã€‚
  */
 gboolean GARNET_API g_str_equal_len(const gchar* left, size_t left_len, const gchar* right, size_t right_len);
 
 
 /**
- * w’è‚³‚ê‚½•¶š—ñ‚Ìæ“ª‚É prefix ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚½‚ç‚Ç‚¤‚©‚ğ”»•Ê‚µ‚Ü‚·B
- *  @param [in] self    ”»•Ê‚·‚é•¶š—ñB
- *  @param [in] prefix  ’²‚×‚é•¶š—ñB
+ * æŒ‡å®šã•ã‚ŒãŸæ–‡å­—åˆ—ã®å…ˆé ­ã« prefix ãŒå«ã¾ã‚Œã¦ã„ãŸã‚‰ã©ã†ã‹ã‚’åˆ¤åˆ¥ã—ã¾ã™ã€‚
+ *  @param [in] self    åˆ¤åˆ¥ã™ã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param [in] prefix  èª¿ã¹ã‚‹æ–‡å­—åˆ—ã€‚
  *
- *  @return ŠÜ‚Ü‚ê‚Ä‚¢‚½‚ç^B
+ *  @return å«ã¾ã‚Œã¦ã„ãŸã‚‰çœŸã€‚
  */
 gboolean GARNET_API g_str_startswith(const gchar* self, const gchar* prefix);
 
 
 /**
- * self ‚É appendee ‚ğ•t‚¯‘«‚µ‚Ü‚·B
- *  @param  [in,out]    self    •t‚¯‘«‚³‚ê‚é•¶š—ñB
- *  @param  [in]        apendee •t‚¯‘«‚µ•¶š—ñB
+ * self ã« appendee ã‚’ä»˜ã‘è¶³ã—ã¾ã™ã€‚
+ *  @param  [in,out]    self    ä»˜ã‘è¶³ã•ã‚Œã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param  [in]        apendee ä»˜ã‘è¶³ã—æ–‡å­—åˆ—ã€‚
  *
- *  @return •t‚¯‘«‚³‚ê‚½‚ ‚Æ‚Ì selfB
+ *  @return ä»˜ã‘è¶³ã•ã‚ŒãŸã‚ã¨ã® selfã€‚
  *
  *  @note
- *      Š„‚è“–‚Ä‚ç‚ê‚½ƒoƒbƒtƒ@‚æ‚è’·‚­‚È‚éê‡Aƒoƒbƒtƒ@‚ğL‚Î‚·‚±‚Æ‚Í‚â‚Á‚Ä‚¢‚Ü‚¹‚ñB
+ *      å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸãƒãƒƒãƒ•ã‚¡ã‚ˆã‚Šé•·ããªã‚‹å ´åˆã€ãƒãƒƒãƒ•ã‚¡ã‚’ä¼¸ã°ã™ã“ã¨ã¯ã‚„ã£ã¦ã„ã¾ã›ã‚“ã€‚
  */
 gchar* GARNET_API g_str_append(gchar* self, const gchar* appendee);
 
 
 /**
- * self ‚É appendee ‚ğ•t‚¯‘«‚µ‚Ü‚·B
- *  @param  [in,out]    self    •t‚¯‘«‚³‚ê‚é•¶š—ñB
- *  @param  [in]        apendee •t‚¯‘«‚µ•¶šB
+ * self ã« appendee ã‚’ä»˜ã‘è¶³ã—ã¾ã™ã€‚
+ *  @param  [in,out]    self    ä»˜ã‘è¶³ã•ã‚Œã‚‹æ–‡å­—åˆ—ã€‚
+ *  @param  [in]        apendee ä»˜ã‘è¶³ã—æ–‡å­—ã€‚
  *
- *  @return •t‚¯‘«‚³‚ê‚½‚ ‚Æ‚Ì selfB
+ *  @return ä»˜ã‘è¶³ã•ã‚ŒãŸã‚ã¨ã® selfã€‚
  *
  *  @note
- *      Š„‚è“–‚Ä‚ç‚ê‚½ƒoƒbƒtƒ@‚æ‚è’·‚­‚È‚éê‡Aƒoƒbƒtƒ@‚ğL‚Î‚·‚±‚Æ‚Í‚â‚Á‚Ä‚¢‚Ü‚¹‚ñB
+ *      å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸãƒãƒƒãƒ•ã‚¡ã‚ˆã‚Šé•·ããªã‚‹å ´åˆã€ãƒãƒƒãƒ•ã‚¡ã‚’ä¼¸ã°ã™ã“ã¨ã¯ã‚„ã£ã¦ã„ã¾ã›ã‚“ã€‚
  */
 gchar* GARNET_API g_str_appendch(gchar* self, gchar appendee);
 
 
 /**
- * self ‚Æ right ‚ğŒ‹‡‚µ‚½V‚µ‚¢•¶š—ñ‚ğ•Ô‚µ‚Ü‚·B
- *  @param  [in]    self    Œ‹‡‚·‚é•¶š—ñ¶•ÓB
- *  @param  [in]    right   Œ‹‡‚·‚é•¶š—ñ‰E•ÓB
+ * self ã¨ right ã‚’çµåˆã—ãŸæ–°ã—ã„æ–‡å­—åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
+ *  @param  [in]    self    çµåˆã™ã‚‹æ–‡å­—åˆ—å·¦è¾ºã€‚
+ *  @param  [in]    right   çµåˆã™ã‚‹æ–‡å­—åˆ—å³è¾ºã€‚
  *
- *  @return self ‚Æ right ‚ğŒ‹‡‚µ‚½V‚µ‚¢•¶š—ñB
+ *  @return self ã¨ right ã‚’çµåˆã—ãŸæ–°ã—ã„æ–‡å­—åˆ—ã€‚
  */
 gchar* GARNET_API g_str_concat(const gchar* self, const gchar* right);
 
 
 /**
- * self ‚Ì n •¶š–Ú‚ğ•Ô‚µ‚Ü‚·B
+ * self ã® n æ–‡å­—ç›®ã‚’è¿”ã—ã¾ã™ã€‚
  */
 gint GARNET_API g_str_char_at(const gchar* self, gint n);
 
 
 /**
- * self ‚Ì n •¶š–Ú‚©‚ç m •¶š–Ú‚Ü‚Å‚ğ•Ô‚µ‚Ü‚·B
+ * self ã® n æ–‡å­—ç›®ã‹ã‚‰ m æ–‡å­—ç›®ã¾ã§ã‚’è¿”ã—ã¾ã™ã€‚
  */
 gchar* GARNET_API g_str_slice(const gchar* self, gint n, gint m);
 
 
 /**
- * self ‚Ì n •¶š–Ú‚©‚ç––”ö‚Ü‚Å‚ğ•Ô‚µ‚Ü‚·B
+ * self ã® n æ–‡å­—ç›®ã‹ã‚‰æœ«å°¾ã¾ã§ã‚’è¿”ã—ã¾ã™ã€‚
  */
 gchar* GARNET_API g_str_slice_last(const gchar* self, gint n);
 
 
 /**
- * self ‚ÉŠÜ‚Ü‚ê‚é sub_string ‚ğ replacement ‚Å’uŠ·‚µ‚½Œã‚ÌV‚µ‚¢•¶š—ñ‚ğ•Ô‚µ‚Ü
- * ‚·B
+ * self ã«å«ã¾ã‚Œã‚‹ sub_string ã‚’ replacement ã§ç½®æ›ã—ãŸå¾Œã®æ–°ã—ã„æ–‡å­—åˆ—ã‚’è¿”ã—ã¾
+ * ã™ã€‚
  */
 gchar* GARNET_API g_str_replace( const gchar*  self,
                                  const gchar*  sub_string,
@@ -258,8 +278,8 @@ gchar* GARNET_API g_str_replace( const gchar*  self,
 
 
 /**
- * self ‚ÉŠÜ‚Ü‚ê‚é sub_string ‚ğ replacement ‚Å‚·‚×‚Ä’uŠ·‚µ‚½Œã‚ÌV‚µ‚¢•¶š—ñ‚ğ
- * •Ô‚µ‚Ü‚·B
+ * self ã«å«ã¾ã‚Œã‚‹ sub_string ã‚’ replacement ã§ã™ã¹ã¦ç½®æ›ã—ãŸå¾Œã®æ–°ã—ã„æ–‡å­—åˆ—ã‚’
+ * è¿”ã—ã¾ã™ã€‚
  */
 gchar* GARNET_API g_str_replace_all( const gchar*  self,
                                      const gchar*  sub_string,

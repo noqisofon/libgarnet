@@ -1,7 +1,27 @@
+ï»¿/* -*- encoding: utf-8; -*- */
 /**
  * @file    galloc.h
- * @brief   ƒƒ‚ƒŠŠ„‚è“–‚ÄŠÖ”ƒ‚ƒWƒ…[ƒ‹B
+ * @brief   ãƒ¡ãƒ¢ãƒªå‰²ã‚Šå½“ã¦é–¢æ•°ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã€‚
  * @since   2010-08-25T13:37:43
+ */
+/*
+
+    Copyright (c) %year% %full-author% %author-email%
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by 
+    the Free Software Foundation; either version 3 of the License,
+    or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful, 
+    but WITHOUT ANY WARRANTY; without even the implied warranty
+    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+
+    $Id galloc.h %timestamp% %author% $
  */
 #ifndef garnet_galloc_h
 #define garnet_galloc_h
@@ -13,7 +33,7 @@
 #endif  /* ndef GARNET_DEFINE_GARNET_API */
 
 /**
- * size ƒoƒCƒg‚ğŠ„‚è“–‚ÄAŠ„‚è“–‚Ä‚ç‚ê‚½ƒƒ‚ƒŠ‚É‘Î‚·‚éƒ|ƒCƒ“ƒ^‚ğ•Ô‚µ‚Ü‚·B
+ * size ãƒã‚¤ãƒˆã‚’å‰²ã‚Šå½“ã¦ã€å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸãƒ¡ãƒ¢ãƒªã«å¯¾ã™ã‚‹ãƒã‚¤ãƒ³ã‚¿ã‚’è¿”ã—ã¾ã™ã€‚
  */
 VALUE g_malloc(size_t size);
 
@@ -22,38 +42,34 @@ typedef     void*       VALUE;
 #   define      GARNET_DEFINE_VALUE
 #endif  /* GARNET_DEFINE_VALUE */
 
+
 /**
- * size * n ƒoƒCƒg‚ğŠ„‚è“–‚ÄAŠ„‚è“–‚Ä‚ç‚ê‚½ƒƒ‚ƒŠ‚É‘Î‚·‚éƒ|ƒCƒ“ƒ^‚ğ•Ô‚µ‚Ü‚·B
+ * size * n ãƒã‚¤ãƒˆã‚’å‰²ã‚Šå½“ã¦ã€å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸãƒ¡ãƒ¢ãƒªã«å¯¾ã™ã‚‹ãƒã‚¤ãƒ³ã‚¿ã‚’è¿”ã—ã¾ã™ã€‚
  * @see g_malloc
  */
 VALUE GARNET_API g_malloc2(size_t n, size_t size);
 
+
 /**
- * size ƒoƒCƒg‚ğŠ„‚è“–‚ÄAŠ„‚è“–‚Ä‚ç‚ê‚½ƒƒ‚ƒŠ‚É‘Î‚·‚éƒ|ƒCƒ“ƒ^‚ğ•Ô‚µ‚Ü‚·B
+ * size ãƒã‚¤ãƒˆã‚’å‰²ã‚Šå½“ã¦ã€å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸãƒ¡ãƒ¢ãƒªã«å¯¾ã™ã‚‹ãƒã‚¤ãƒ³ã‚¿ã‚’è¿”ã—ã¾ã™ã€‚
  */
 VALUE GARNET_API g_malloc(size_t size);
 
 
 /**
- * size * n ƒoƒCƒg‚ğŠ„‚è“–‚ÄAŠ„‚è“–‚Ä‚ç‚ê‚½ƒƒ‚ƒŠ‚É‘Î‚·‚éƒ|ƒCƒ“ƒ^‚ğ•Ô‚µ‚Ü‚·B
- * @see g_malloc
- */
-VALUE GARNET_API g_malloc2(size_t n, size_t size);
-
-/**
- * size ƒoƒCƒg n ŒÂ‚ğŠ„‚è“–‚ÄAŠ„‚è“–‚Ä‚ç‚ê‚½ƒƒ‚ƒŠ‚É‘Î‚·‚éƒ|ƒCƒ“ƒ^‚ğ•Ô‚µ‚Ü‚·B
+ * size ãƒã‚¤ãƒˆ n å€‹ã‚’å‰²ã‚Šå½“ã¦ã€å‰²ã‚Šå½“ã¦ã‚‰ã‚ŒãŸãƒ¡ãƒ¢ãƒªã«å¯¾ã™ã‚‹ãƒã‚¤ãƒ³ã‚¿ã‚’è¿”ã—ã¾ã™ã€‚
  */
 VALUE GARNET_API g_calloc(size_t n, size_t size);
 
 
 /**
- * ptr ‚Ìƒƒ‚ƒŠƒuƒƒbƒN‚ÌƒTƒCƒY‚ğ•ÏX‚µAsize ƒoƒCƒg‚É‚µ‚Ü‚·B
+ * ptr ã®ãƒ¡ãƒ¢ãƒªãƒ–ãƒ­ãƒƒã‚¯ã®ã‚µã‚¤ã‚ºã‚’å¤‰æ›´ã—ã€size ãƒã‚¤ãƒˆã«ã—ã¾ã™ã€‚
  */
 VALUE GARNET_API g_realloc(VALUE ptr, size_t size);
 
 
 /**
- * ptr ‚ªw‚·ƒƒ‚ƒŠ‹óŠÔ‚ğŠJ•ú‚µ‚Ü‚·B
+ * ptr ãŒæŒ‡ã™ãƒ¡ãƒ¢ãƒªç©ºé–“ã‚’é–‹æ”¾ã—ã¾ã™ã€‚
  */
 void GARNET_API g_free(VALUE ptr);
 

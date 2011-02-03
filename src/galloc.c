@@ -1,3 +1,27 @@
+﻿/* -*- encoding: utf-8; -*- */
+/**
+ * @file galloc.c
+ * @since %create-timestamp%
+ * 
+ */
+/*
+    Copyright (c) %year% %full-author% %author-email%
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by 
+    the Free Software Foundation; either version 3 of the License,
+    or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful, 
+    but WITHOUT ANY WARRANTY; without even the implied warranty
+    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+
+    $Id galloc.c %timestamp% %author% $
+ */
 #include <stdafx.h>
 
 #include <stdio.h>
@@ -69,13 +93,14 @@ VALUE GARNET_API g_realloc(VALUE p, size_t size)
 void GARNET_API g_free(VALUE p)
 {
     free( p );
-    p   = NULL;
+    if ( !p )
+        p   = NULL;
 }
 
 
 static void g_malloc_failed(size_t request_size)
 {
-    fprintf( stderr, "memory allocation failed at %d\n", request_size );
+    g_fprintf( stderr, "memory allocation failed at %d\n", request_size );
 
     g_exit( 1 );
 }
@@ -83,7 +108,7 @@ static void g_malloc_failed(size_t request_size)
 
 static void g_realloc_failed(VALUE base_p, size_t request_size)
 {
-    fprintf( stderr, "memory allocation failed at %d from 0x%p\n", request_size, base_p );
+    g_fprintf( stderr, "memory allocation failed at %d from 0x%p\n", request_size, base_p );
 
     g_exit( 1 );
 }

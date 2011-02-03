@@ -1,3 +1,27 @@
+/* -*- encoding: utf-8; -*- */
+/**
+ * @file gstring.c
+ * @since %create-timestamp%
+ * 
+ */
+/*
+    Copyright (c) %year% %full-author% %author-email%
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by 
+    the Free Software Foundation; either version 3 of the License,
+    or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful, 
+    but WITHOUT ANY WARRANTY; without even the implied warranty
+    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program. If not, see <http://www.gnu.org/licenses/>.
+
+    $Id gstring.c %timestamp% %author% $
+ */
 #include <stdafx.h>
 
 #include <string.h>
@@ -10,14 +34,14 @@
 
 /**
  * @def EMPTY_STRING
- * ‹ó•¶š—ñ‚ğ•\‚µ‚Ü‚·B
+ * ç©ºæ–‡å­—åˆ—ã‚’è¡¨ã—ã¾ã™ã€‚
  */
 #define     EMPTY_STRING        ""
 
 
 /**
  * @def STRING_SENTINEL
- * •¶š—ñ‚ÌI‚í‚è‚ğ¦‚·•¶š‚Å‚·B
+ * æ–‡å­—åˆ—ã®çµ‚ã‚ã‚Šã‚’ç¤ºã™æ–‡å­—ã§ã™ã€‚
  */
 #define     STRING_SENTINEL     '\0'
 
@@ -30,7 +54,7 @@
 
 /**
  * @def EOS(str, i)
- * •¶š—ñ‚Ìw’è‚³‚ê‚½ˆÊ’u‚É \0 ‚ğ‘ã“ü‚µ‚Ü‚·B
+ * æ–‡å­—åˆ—ã®æŒ‡å®šã•ã‚ŒãŸä½ç½®ã« \0 ã‚’ä»£å…¥ã—ã¾ã™ã€‚
  */
 #define     EOS(str, i)         SPUT(str, i, STRING_SENTINEL)
 
@@ -42,7 +66,7 @@
 
 
 /**
- * ’·‚³ n ‚Ì•¶š—ñƒoƒbƒtƒ@‚ğ•Ô‚µ‚Ü‚·B
+ * é•·ã• n ã®æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡ã‚’è¿”ã—ã¾ã™ã€‚
  */
 static gchar* g_create_cstring(size_t n);
 
@@ -130,8 +154,8 @@ gchar* GARNET_API g_str_assign(gchar* self, const gchar* other)
     if ( other_len == 0 )
         return NULL;
 
-    if ( *self )
-        self    = g_new(gchar, other_len);
+    if ( !self )
+        self    = g_create_cstring( gchar, other_len );
     else
         self    = REALLOC(gchar, self, other_len);
 
