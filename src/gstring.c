@@ -1,11 +1,11 @@
-/* -*- encoding: utf-8; -*- */
+﻿/* -*- encoding: utf-8; -*- */
 /**
  * @file gstring.c
  * @since %create-timestamp%
  * 
  */
 /*
-    Copyright (c) %year% %full-author% %author-email%
+    Copyright (c) 2010-2011 %full-author% %author-email%
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by 
@@ -346,11 +346,15 @@ gchar* GARNET_API g_str_concat(const gchar* self, const gchar* right)
     size_t  self_len, right_len;
 
     if ( !self || !right ) {
+        // どっちかが NULL だった場合。
         if ( !self && right )
+            // self が NULL な場合。
             return g_strdup( right );
-        else if ( self && right )
+        else if ( self && !right )
+            // right が NULL な場合。
             return g_strdup( self );
         else
+            // どっちも NULL な場合。
             return NULL;
     }
 
@@ -365,17 +369,18 @@ gchar* GARNET_API g_str_concat(const gchar* self, const gchar* right)
 }
 
 
-gint GARNET_API g_str_char_at(const gchar* self, gint n)
+gint GARNET_API g_str_char_at(const gchar* self, gint index)
 {
     size_t  len;
 
     if ( !self )
+        // self が NULL な場合。
         return -1;
     len     = g_strlen( self );
-    if ( 0 > n || __STATIC_CAST(gint, len) < n )
+    if ( 0 > n || __STATIC_CAST(gint, len) < index )
         return -1;
 
-    return self[n];
+    return self[index];
 }
 
 
@@ -412,6 +417,22 @@ gchar* GARNET_API g_str_slice(const gchar* self, gint n, gint m)
 gchar* GARNET_API g_str_slice_last(const gchar* self, gint n)
 {
     return g_str_slice( self, n, __STATIC_CAST(gint, g_strlen( self ) - 1) );
+}
+
+
+gchar* GARNET_API g_str_replace( const gchar*  self,
+                                 const gchar*  sub_string,
+                                 const gchar*  replacement
+                                 )
+{
+}
+
+
+gchar* GARNET_API g_str_replace_all( const gchar*  self,
+                                     const gchar*  sub_string,
+                                     const gchar*  replacement
+                                     )
+{
 }
 
 

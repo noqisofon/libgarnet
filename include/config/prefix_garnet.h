@@ -1,4 +1,4 @@
-/* -*- encoding: utf-8; -*- */
+﻿/* -*- encoding: utf-8; -*- */
 /**
  * @file prefix_garnet.h
  * @since %create-timestamp%
@@ -25,10 +25,10 @@
 #ifndef garnet_prefix_garnet_h
 #define garnet_prefix_garnet_h
 
-//#ifndef _MSC_VER
+#ifndef _MSC_VER
 #   include <stdint.h>
 #   include <limits.h>
-//#endif  /* ndef _MSC_VER */
+#endif  /* ndef _MSC_VER */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>

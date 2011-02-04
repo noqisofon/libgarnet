@@ -4,7 +4,6 @@
  * @since   2010-10-14T10:19:44
  * @brief   標準スレッド操作関数モジュール。
  */
-
 /*
     Copyright (c) 2010-2011 %full-author% %author-email%
 

@@ -1,4 +1,4 @@
-/* -*- encoding: utf-8; -*- */
+﻿/* -*- encoding: utf-8; -*- */
 /**
  * @file _crt.h
  * @since %create-timestamp%
@@ -34,8 +34,8 @@
 #define     eos(str, index)         str[index] = '\0'
 #define     str_truncate(str)       eos(str, 0)
 
-#define     crt_max(x, y)           x > y? x: y
-#define     crt_min(x, y)           x < y? x: y
+#define     crt_max(x, y)           (x > y? x: y)
+#define     crt_min(x, y)           (x < y? x: y)
 
 
 #include "_guard_snip.h"

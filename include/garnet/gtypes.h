@@ -1,11 +1,10 @@
 ﻿/* -*- encoding: utf-8; -*- */
 /**
- * @file gtypes.h
- * @since %create-timestamp%
- * 
+ * @file    gtypes.h
+ * @since   %create-timestamp%
+ * @brief   libgarnet で使う型エイリアス。
  */
 /*
-
     Copyright (c) 2010-2011 %full-author% %author-email%
 
     This program is free software; you can redistribute it and/or modify

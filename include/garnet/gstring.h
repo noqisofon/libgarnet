@@ -1,12 +1,11 @@
 ﻿/* -*- encoding: utf-8; -*- */
 /**
  * @file    gstring.h
- * @brief   文字列用関数モジュール。
  * @since   2010-07-27T08:41:24
+ * @brief   文字列用関数モジュール。
  */
 /*
-
-    Copyright (c) %year% %full-author% %author-email%
+    Copyright (c) 2010-2011 %full-author% %author-email%
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by 

@@ -10,6 +10,7 @@
 *.cdf
 *.conf
 *.dep
+*.diff
 *.dll
 *.dump
 *.exe
@@ -56,5 +57,5 @@
 *.xdc
 *.xml
 *.zip
+\#*#
 tags
-*.diff
