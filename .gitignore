@@ -5,6 +5,7 @@
 *.application
 *.aps
 *.bat
+*.bak
 *.bsc
 *.cache
 *.cdf

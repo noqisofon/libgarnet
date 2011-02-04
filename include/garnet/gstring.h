@@ -87,7 +87,7 @@ gchar* GARNET_API g_strdup(const gchar* self);
  *  @param [in] self    複製する文字列。
  *  @param [in] n       複製する文字数。
  *
- *  @retuen 複製された文字列。
+ *  @return 複製された文字列。
  *
  *  @note 複製された文字列は使い終わったら g_free 関数で開放してください。
  */
@@ -214,8 +214,8 @@ gboolean GARNET_API g_str_startswith(const gchar* self, const gchar* prefix);
 
 /**
  * self に appendee を付け足します。
- *  @param  [in,out]    self    付け足される文字列。
- *  @param  [in]        apendee 付け足し文字列。
+ *  @param  [in,out]    self     付け足される文字列。
+ *  @param  [in]        appendee 付け足し文字列。
  *
  *  @return 付け足されたあとの self。
  *
@@ -227,8 +227,8 @@ gchar* GARNET_API g_str_append(gchar* self, const gchar* appendee);
 
 /**
  * self に appendee を付け足します。
- *  @param  [in,out]    self    付け足される文字列。
- *  @param  [in]        apendee 付け足し文字。
+ *  @param  [in,out]    self     付け足される文字列。
+ *  @param  [in]        appendee 付け足し文字。
  *
  *  @return 付け足されたあとの self。
  *
