@@ -1,4 +1,3 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
  * @file prefix_garnet.h
  * @since %create-timestamp%
@@ -40,3 +39,7 @@
 
 
 #endif  /* garnet_prefix_garnet_h */
+// Local Variables:
+//   coding: shift_jis-dos
+// End:
+// prefix_garnet.h ends here

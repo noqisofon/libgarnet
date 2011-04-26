@@ -1,7 +1,6 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
- * @file galloc.c
- * @since %create-timestamp%
+ * \file galloc.c
+ * \since %create-timestamp%
  * 
  */
 /*
@@ -20,15 +19,16 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id galloc.c %timestamp% %author% $
+    $Id galloc.c %timestamp% noqisofon $
  */
 #include <stdafx.h>
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <memory.h>
 
+#ifdef GARNET_BUILD
+#   include <garnet/_garnet.h>
+#endif  /* def GARNET_BUILD */
 #include <garnet/gthread.h>
 #include <garnet/galloc.h>
 
@@ -112,3 +112,7 @@ static void g_realloc_failed(VALUE base_p, size_t request_size)
 
     g_exit( 1 );
 }
+// Local Variables:
+//   coding: shift_jis-dos
+// End:
+// galloc.c ends here

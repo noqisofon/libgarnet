@@ -1,4 +1,3 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
  * @file _crt.h
  * @since %create-timestamp%
@@ -42,3 +41,7 @@
 
 
 #endif  /* garnet_crt__crt_h */
+// Local Variables:
+//   coding: shift_jis
+// End:
+// _crt.h ends here

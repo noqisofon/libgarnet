@@ -4,8 +4,8 @@
 *.a
 *.application
 *.aps
-*.bat
 *.bak
+*.bat
 *.bsc
 *.cache
 *.cdf
@@ -59,4 +59,5 @@
 *.xml
 *.zip
 \#*#
-tags
+TAGS
+./commit

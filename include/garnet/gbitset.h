@@ -1,7 +1,6 @@
-ï»¿/* -*- encoding: utf-8; -*- */
 /**
- * @file gbitset.h
- * @since 2010-11-02T09:16:51+0900
+ * \file gbitset.h
+ * \since 2010-11-02T09:16:51+0900
  */
 /*
     Copyright (c) 2010-2011 %full-author% %author-email%
@@ -24,9 +23,10 @@
 #ifndef garnet_gbitset_h
 #define garnet_gbitset_h
 
-#ifndef GARNET_DEFINE_GARNET_API
-#   define     GARNET_API      __stdcall
-#endif  /* ndef GARNET_DEFINE_GARNET_API */
+#ifndef GARNET_DEFINED_GARNET_API
+#   define      GARNET_API                  __stdcall
+#   define      GARNET_DEFINED_GARNET_API
+#endif  /* ndef GARNET_DEFINED_GARNET_API */
 
 #ifndef GARNET_DEFINED_GBOOLEAN
 #   ifndef __cplusplus
@@ -47,23 +47,27 @@ typedef     unsigned int    bitset_t;
 
 
 /**
- * self ã« other_bitset ãŒå«ã¾ã‚Œã¦ã„ãŸã‚‰çœŸã‚’è¿”ã—ã¾ã™ã€‚
+ * self ‚É other_bitset ‚ªŠÜ‚Ü‚ê‚Ä‚¢‚½‚ç^‚ğ•Ô‚µ‚Ü‚·B
  */
 gboolean GARNET_API g_bitset_is_include(bitset_t self, bitset_t other_bitset);
 
 
 /**
- * æŒ‡å®šã•ã‚ŒãŸãƒ“ãƒƒãƒˆã‚»ãƒƒãƒˆã‚’åè»¢ã—ãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚
+ * w’è‚³‚ê‚½ƒrƒbƒgƒZƒbƒg‚ğ”½“]‚µ‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B
  */
 bitset_t GARNET_API g_bitset_inversion(bitset_t self);
 
 
 
 /**
- * self ã‹ã‚‰ other ã‚’å–ã‚Šé™¤ã„ãŸã‚‚ã®ã‚’è¿”ã—ã¾ã™ã€‚
- * @since 2010-09-24T14:13:12+0900
+ * self ‚©‚ç other ‚ğæ‚èœ‚¢‚½‚à‚Ì‚ğ•Ô‚µ‚Ü‚·B
+ * \since 2010-09-24T14:13:12+0900
  */
 bitset_t GARNET_API g_bitset_difference(bitset_t self, bitset_t other);
 
 
 #endif  /* garnet_gbitset_h */
+// Local Variables:
+//   coding: shift_jis
+// End:
+// gbitset.h ends here

@@ -1,7 +1,6 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
- * @file glogger.c
- * @since %create-timestamp%
+ * \file glogger.c
+ * \since %create-timestamp%
  * 
  */
 /*
@@ -20,7 +19,7 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id glogger.c %timestamp% %author% $
+    $Id glogger.c %timestamp% noqisofon $
  */
 #include <stdafx.h>
 
@@ -29,6 +28,9 @@
 #include <time.h>
 #include <tchar.h>
 
+#ifdef GARNET_BUILD
+#   include <garnet/_garnet.h>
+#endif  /* def GARNET_BUILD */
 #include <garnet/glogger.h>
 
 
@@ -189,7 +191,7 @@ void GARNET_API g_log_default_handler( const gchar*    log_domain,
 
 
 /**
- * @since 2010-09-14
+ * \since 2010-09-14
  */
 static const char* log_level_filter(LogLevelFlags log_level)
 {
@@ -219,3 +221,7 @@ static const char* log_level_filter(LogLevelFlags log_level)
         return "";
     }
 }
+// Local Variables:
+//   coding: shift_jis-dos
+// End:
+// glogger.h ends here

@@ -1,7 +1,6 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
- * @file _garnet.h
- * @since %create-timestamp%
+ * \file _garnet.h
+ * \since %create-timestamp%
  * 
  */
 /*
@@ -20,26 +19,31 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id _garnet.h %timestamp% %author% $
+    $Id _garnet.h %timestamp% noqisofon $
  */
 #ifndef garnet__garnet_h
 #define garnet__garnet_h
 
-#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <string.h>
+#include <stdint.h>
 
-#ifdef GARNET_HAS_GTYPES_H
+#ifndef GARNET_HAS_GTYPES_H
 #   include <garnet/gtypes.h>
 #endif  /* def GARNET_HAS_GTYPES_H */
 
+#ifndef GARNET_DEFINED_GARNET_API
+#   define      GARNET_API                  __stdcall
+#   define      GARNET_DEFINED_GARNET_API
+#endif  /* ndef GARNET_DEFINED_GARNET_API */
 
-#ifndef GARNET_DEFINE_VALUE
+
+#ifndef GARNET_DEFINED_VALUE
 typedef     void*       VALUE;
-#   define      GARNET_DEFINE_VALUE
-#endif  /* GARNET_DEFINE_VALUE */
+#   define      GARNET_DEFINED_VALUE
+#endif  /* GARNET_DEFINED_VALUE */
 
 #ifndef GARNET_DEFINED_GCHAR
 #   if defined(_UNICODE) || defined(UNICODE)
@@ -63,4 +67,11 @@ typedef     bool        gboolean;
 #endif  /* def GARNET_DEFINED_GBOOLEAN */
 
 
+#define     g_fprintf     fprintf
+
+
 #endif  /* garnet__garnet_h */
+// Local Variables:
+//   coding: shift_jis
+// End:
+// _garnet.h ends here

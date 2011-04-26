@@ -1,4 +1,3 @@
-ï»¿/* -*- encoding: utf-8; -*- */
 /**
  * @file _crt_string.h
  * @since %create-timestamp%
@@ -29,21 +28,25 @@
 
 
 /**
- * CRT ã® strcpy_s é–¢æ•°ã‚’ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã—ã¾ã™ã€‚
+ * CRT ‚Ì strcpy_s ŠÖ”‚ğƒGƒ~ƒ…ƒŒ[ƒg‚µ‚Ü‚·B
  */
 errno_t crt_strcpy(char* destination, size_t number_of_elements, const char* source);
 
 
 /**
- * CRT ã® strncpy_s é–¢æ•°ã‚’ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã—ã¾ã™ã€‚
+ * CRT ‚Ì strncpy_s ŠÖ”‚ğƒGƒ~ƒ…ƒŒ[ƒg‚µ‚Ü‚·B
  */
 errno_t crt_strncpy(char* destination, size_t number_of_elements, const char* source, size_t count);
 
 
 /**
- * CRT ã® strcat_s é–¢æ•°ã‚’ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ãƒˆã—ã¾ã™ã€‚
+ * CRT ‚Ì strcat_s ŠÖ”‚ğƒGƒ~ƒ…ƒŒ[ƒg‚µ‚Ü‚·B
  */
 errno_t crt_strcat(char* destination, size_t number_of_elements, const char* source);
 
 
 #endif  /* garnet_crt__crt_string_h */
+// Local Variables:
+//   coding: shift_jis-dos
+// End:
+// _crt_string.h ends here

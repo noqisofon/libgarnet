@@ -1,7 +1,6 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
- * @file glinkedlist.c
- * @since %create-timestamp%
+ * \file glinkedlist.c
+ * \since %create-timestamp%
  * 
  */
 /*
@@ -20,15 +19,17 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id glinkedlist.c %timestamp% %author% $
+    $Id glinkedlist.c %timestamp% noqisofon $
  */
 #include <stdafx.h>
 
 #include <stddef.h>
 #include <stdint.h>
 
+#ifdef GARNET_BUILD
+#   include <garnet/_garnet.h>
+#endif  /* def GARNET_BUILD */
 #include <garnet/galloc.h>
-
 #include <garnet/glinkedlist.h>
 
 
@@ -207,3 +208,7 @@ static GList*  g_list_new(VALUE item)
 
     return ret;
 }
+// Local Variables:
+//   coding: shift_jis-dos
+// End:
+// glinklist.h ends here

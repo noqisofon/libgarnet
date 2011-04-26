@@ -1,7 +1,6 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
- * @file garnet.h
- * @since 2010-10-27T16:48:11+09:00
+ * \file garnet.h
+ * \since 2010-10-27T16:48:11+09:00
  * 
  */
 /*
@@ -20,7 +19,7 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id garnet.h 2010-10-27T16:48:11+09:00 %author% $
+    $Id garnet.h 2010-10-27T16:48:11+09:00 noqisofon $
  */
 #ifndef garnet_garnet_h
 #define garnet_garnet_h
@@ -35,3 +34,8 @@
 
 
 #endif  /* garnet_garnet_h */
+
+// Local Variables:
+//   coding: shift_jis
+// End:
+// garnet.h ends here

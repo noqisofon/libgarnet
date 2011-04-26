@@ -1,6 +1,5 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
- * @file gbitset.c
+ * \file gbitset.c
  */
 /*
     Copyright (c) 2010-2011 %full-author% %author-email%
@@ -18,9 +17,13 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id gbitset.c %timestamp% %author% $
+    $Id gbitset.c %timestamp% noqisofon $
  */
 #include <stdafx.h>
+
+#ifdef GARNET_BUILD
+#   include <garnet/_garnet.h>
+#endif  /* def GARNET_BUILD */
 #include <garnet/gbitset.h>
 
 
@@ -40,3 +43,7 @@ bitset_t GARNET_API g_bitset_difference(bitset_t self, bitset_t other)
 {
     return self ^ (self & other);
 }
+// Local Variables:
+//   coding: shift_jis-dos
+// End:
+// gbitset.h ends here

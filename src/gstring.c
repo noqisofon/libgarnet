@@ -1,7 +1,6 @@
-ï»¿/* -*- encoding: utf-8; -*- */
 /**
- * @file gstring.c
- * @since %create-timestamp%
+ * \file gstring.c
+ * \since %create-timestamp%
  * 
  */
 /*
@@ -20,12 +19,15 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id gstring.c %timestamp% %author% $
+    $Id gstring.c %timestamp% noqisofon $
  */
 #include <stdafx.h>
 
 #include <string.h>
 
+#ifdef GARNET_BUILD
+#   include <garnet/_garnet.h>
+#endif  /* def GARNET_BUILD */
 #include <garnet/galloc.h>
 #include <garnet/gstring.h>
 
@@ -34,14 +36,14 @@
 
 /**
  * @def EMPTY_STRING
- * ç©ºæ–‡å­—åˆ—ã‚’è¡¨ã—ã¾ã™ã€‚
+ * ‹ó•¶Žš—ñ‚ð•\‚µ‚Ü‚·B
  */
 #define     EMPTY_STRING        ""
 
 
 /**
  * @def STRING_SENTINEL
- * æ–‡å­—åˆ—ã®çµ‚ã‚ã‚Šã‚’ç¤ºã™æ–‡å­—ã§ã™ã€‚
+ * •¶Žš—ñ‚ÌI‚í‚è‚ðŽ¦‚·•¶Žš‚Å‚·B
  */
 #define     STRING_SENTINEL     '\0'
 
@@ -54,7 +56,7 @@
 
 /**
  * @def EOS(str, i)
- * æ–‡å­—åˆ—ã®æŒ‡å®šã•ã‚ŒãŸä½ç½®ã« \0 ã‚’ä»£å…¥ã—ã¾ã™ã€‚
+ * •¶Žš—ñ‚ÌŽw’è‚³‚ê‚½ˆÊ’u‚É \0 ‚ð‘ã“ü‚µ‚Ü‚·B
  */
 #define     EOS(str, i)         SPUT(str, i, STRING_SENTINEL)
 
@@ -66,7 +68,7 @@
 
 
 /**
- * é•·ã• n ã®æ–‡å­—åˆ—ãƒãƒƒãƒ•ã‚¡ã‚’è¿”ã—ã¾ã™ã€‚
+ * ’·‚³ n ‚Ì•¶Žš—ñƒoƒbƒtƒ@‚ð•Ô‚µ‚Ü‚·B
  */
 static gchar* g_create_cstring(size_t n);
 
@@ -80,6 +82,19 @@ size_t GARNET_API g_strlen(const gchar* self)
         i ++;
 
     return i;
+}
+
+
+
+gchar* GARNET_API g_strcpy(gchar* s1, const gchar* s2)
+{
+#ifndef _MSC_VER
+    _tcscpy_s( s1, s2 );
+
+    return s1;
+#else
+    
+#endif  /* _MSC_VER */
 }
 #endif
 
@@ -155,7 +170,7 @@ gchar* GARNET_API g_str_assign(gchar* self, const gchar* other)
         return NULL;
 
     if ( !self )
-        self    = g_create_cstring( gchar, other_len );
+        self    = g_create_cstring( other_len );
     else
         self    = REALLOC(gchar, self, other_len);
 
@@ -346,15 +361,15 @@ gchar* GARNET_API g_str_concat(const gchar* self, const gchar* right)
     size_t  self_len, right_len;
 
     if ( !self || !right ) {
-        // ã©ã£ã¡ã‹ãŒ NULL ã ã£ãŸå ´åˆã€‚
+        // ‚Ç‚Á‚¿‚©‚ª NULL ‚¾‚Á‚½ê‡B
         if ( !self && right )
-            // self ãŒ NULL ãªå ´åˆã€‚
+            // self ‚ª NULL ‚Èê‡B
             return g_strdup( right );
         else if ( self && !right )
-            // right ãŒ NULL ãªå ´åˆã€‚
+            // right ‚ª NULL ‚Èê‡B
             return g_strdup( self );
         else
-            // ã©ã£ã¡ã‚‚ NULL ãªå ´åˆã€‚
+            // ‚Ç‚Á‚¿‚à NULL ‚Èê‡B
             return NULL;
     }
 
@@ -374,10 +389,10 @@ gint GARNET_API g_str_char_at(const gchar* self, gint index)
     size_t  len;
 
     if ( !self )
-        // self ãŒ NULL ãªå ´åˆã€‚
+        // self ‚ª NULL ‚Èê‡B
         return -1;
     len     = g_strlen( self );
-    if ( 0 > n || __STATIC_CAST(gint, len) < index )
+    if ( 0 > len || __STATIC_CAST(gint, len) < index )
         return -1;
 
     return self[index];
@@ -425,6 +440,7 @@ gchar* GARNET_API g_str_replace( const gchar*  self,
                                  const gchar*  replacement
                                  )
 {
+    return NULL;
 }
 
 
@@ -433,6 +449,7 @@ gchar* GARNET_API g_str_replace_all( const gchar*  self,
                                      const gchar*  replacement
                                      )
 {
+    return NULL;
 }
 
 
@@ -440,3 +457,7 @@ static gchar* g_create_cstring(size_t n)
 {
     return g_new(gchar, n + 1);
 }
+// Local Variables:
+//   coding: shift_jis-dos
+// End:
+// gstring.h ends here

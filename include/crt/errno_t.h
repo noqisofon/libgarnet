@@ -1,4 +1,3 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
  * @file errno_t.h
  * @since %create-timestamp%
@@ -34,3 +33,7 @@ typedef     int     errno_t;
 
 
 #endif  /* garnet_crt_errno_h */
+// Local Variables:
+//   coding: shift_jis-dos
+// End:
+// _guard_snip.h ends here

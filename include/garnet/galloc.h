@@ -1,8 +1,7 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
- * @file    galloc.h
- * @brief   メモリ割り当て関数モジュール。
- * @since   2010-08-25T13:37:43
+ * \file    galloc.h
+ * \brief   ���������蓖�Ċ֐����W���[���B
+ * \since   2010-08-25T13:37:43
  */
 /*
     Copyright (c) 2010-2011 %full-author% %author-email%
@@ -20,55 +19,49 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id galloc.h %timestamp% %author% $
+    $Id galloc.h %timestamp% noqisofon $
  */
 #ifndef garnet_galloc_h
 #define garnet_galloc_h
 
-#include <stdint.h>
+#ifndef GARNET_DEFINED_GARNET_API
+#   define      GARNET_API                  __stdcall
+#   define      GARNET_DEFINED_GARNET_API
+#endif  /* ndef GARNET_DEFINED_GARNET_API */
 
-#ifndef GARNET_DEFINE_GARNET_API
-#   define     GARNET_API      __stdcall
-#endif  /* ndef GARNET_DEFINE_GARNET_API */
-
-/**
- * size バイトを割り当て、割り当てられたメモリに対するポインタを返します。
- */
-VALUE g_malloc(size_t size);
-
-#ifndef GARNET_DEFINE_VALUE
+#ifndef GARNET_DEFINED_VALUE
 typedef     void*       VALUE;
-#   define      GARNET_DEFINE_VALUE
-#endif  /* GARNET_DEFINE_VALUE */
+#   define      GARNET_DEFINED_VALUE
+#endif  /* GARNET_DEFINED_VALUE */
 
 
 /**
- * size * n バイトを割り当て、割り当てられたメモリに対するポインタを返します。
+ * size * n �o�C�g�����蓖�āA���蓖�Ă�ꂽ�������ɑ΂���|�C���^��Ԃ��܂��B
  * @see g_malloc
  */
 VALUE GARNET_API g_malloc2(size_t n, size_t size);
 
 
 /**
- * size バイトを割り当て、割り当てられたメモリに対するポインタを返します。
+ * size �o�C�g�����蓖�āA���蓖�Ă�ꂽ�������ɑ΂���|�C���^��Ԃ��܂��B
  */
 VALUE GARNET_API g_malloc(size_t size);
 
 
 /**
- * size バイト n 個を割り当て、割り当てられたメモリに対するポインタを返します。
+ * size �o�C�g n �����蓖�āA���蓖�Ă�ꂽ�������ɑ΂���|�C���^��Ԃ��܂��B
  */
 VALUE GARNET_API g_calloc(size_t n, size_t size);
 
 
 /**
- * ptr のメモリブロックのサイズを変更し、size バイトにします。
+ * ptr �̃������u���b�N�̃T�C�Y��ύX���Asize �o�C�g�ɂ��܂��B
  */
 VALUE GARNET_API g_realloc(VALUE ptr, size_t size);
 
 
 /**
- * ptr が指すメモリ空間を開放します。
+ * ptr ���w����������Ԃ��J�����܂��B
  */
 void GARNET_API g_free(VALUE ptr);
 
@@ -99,3 +92,8 @@ void GARNET_API g_free(VALUE ptr);
 
 
 #endif  /* garnet_galloc_h */
+
+// Local Variables:
+//   coding: shift_jis
+// End:
+// galloc.h ends here

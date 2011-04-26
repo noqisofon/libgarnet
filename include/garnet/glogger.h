@@ -1,8 +1,7 @@
-Ôªø/* -*- encoding: utf-8; -*- */
 /**
- * @file    glogger.h
- * @since   2010-07-27T08:55:17
- * @brief   „É≠„ÇÆ„É≥„Ç∞„ÄÇ
+ * \file    glogger.h
+ * \since   2010-07-27T08:55:17
+ * \brief   ÉçÉMÉìÉOÅB
  */
 /*
     Copyright (c) 2010-2011 %full-author% %author-email%
@@ -20,7 +19,7 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id glogger.h %timestamp% %author% $
+    $Id glogger.h %timestamp% noqisofon $
  */
 #ifndef garnet_glogger_h
 #define garnet_glogger_h
@@ -28,19 +27,20 @@
 #include <stdint.h>
 #include <stdarg.h>
 
-#ifndef GARNET_DEFINE_GARNET_API
-#   define     GARNET_API      __stdcall
-#endif  /* ndef GARNET_DEFINE_GARNET_API */
+#ifndef GARNET_DEFINED_GARNET_API
+#   define      GARNET_API                  __stdcall
+#   define      GARNET_DEFINED_GARNET_API
+#endif  /* ndef GARNET_DEFINED_GARNET_API */
 
-#ifndef GARNET_DEFINE_VALUE
+#ifndef GARNET_DEFINED_VALUE
 typedef     void*       VALUE;
-#   define      GARNET_DEFINE_VALUE
-#endif  /* GARNET_DEFINE_VALUE */
+#   define      GARNET_DEFINED_VALUE
+#endif  /* GARNET_DEFINED_VALUE */
 
-#ifndef GARNET_DEFINE_GUINT
+#ifndef GARNET_DEFINED_GUINT
 typedef     uint32_t       guint;
-#   define      GARNET_DEFINE_GUINT
-#endif  /* GARNET_DEFINE_GUINT */
+#   define      GARNET_DEFINED_GUINT
+#endif  /* GARNET_DEFINED_GUINT */
 
 #ifndef GARNET_DEFINED_GCHAR
 #   if defined(_UNICODE) || defined(UNICODE)
@@ -97,30 +97,30 @@ typedef enum {
 /**
  * @typedef g_log_functor
  */
-typedef     void    (GARNET_API *g_log_functor)( const gchar*      lor_domain,
-                                                 LogLevelFlags     lor_level,
+typedef     void    (GARNET_API *g_log_functor)( const gchar*      log_domain,
+                                                 LogLevelFlags     log_level,
                                                  const gchar*      message,
                                                  VALUE             user_data
                                                  );
 
 
 /**
- * „É°„ÉÉ„Çª„Éº„Ç∏„ÇíË°®Á§∫„Åó„Åæ„Åô„ÄÇ
- * @since 2010-09-14T14:48:14+0900
+ * ÉÅÉbÉZÅ[ÉWÇï\é¶ÇµÇ‹Ç∑ÅB
+ * \since 2010-09-14T14:48:14+0900
  */
-void GARNET_API g_log( const gchar*    lor_domain,
-                       LogLevelFlags   lor_level,
+void GARNET_API g_log( const gchar*    log_domain,
+                       LogLevelFlags   log_level,
                        const gchar*    format,
                        ...
                        );
 
 
 /**
- * „É°„ÉÉ„Çª„Éº„Ç∏„ÇíË°®Á§∫„Åó„Åæ„Åô„ÄÇ
- * @since 2010-09-14T14:48:26+0900
+ * ÉÅÉbÉZÅ[ÉWÇï\é¶ÇµÇ‹Ç∑ÅB
+ * \since 2010-09-14T14:48:26+0900
  */
-void GARNET_API g_logv( const gchar*   lor_domain,
-                        LogLevelFlags  lor_level,
+void GARNET_API g_logv( const gchar*   log_domain,
+                        LogLevelFlags  log_level,
                         const gchar*   format,
                         va_list        args
                         );
@@ -152,32 +152,36 @@ void GARNET_API g_info(const gchar* format, ...);
 
 
 /**
- * „É≠„Ç∞Êõ∏„ÅçËæº„Åø„Éè„É≥„Éâ„É©„Éº„ÇíË®≠ÂÆö„Åó„Åæ„Åô„ÄÇ
- * @since 2010-09-14T14:45:31+0900
+ * ÉçÉOèëÇ´çûÇ›ÉnÉìÉhÉâÅ[Çê›íËÇµÇ‹Ç∑ÅB
+ * \since 2010-09-14T14:45:31+0900
  */
-guint GARNET_API g_log_set_handler( const gchar*   lor_domain,
-                                    LogLevelFlags  lor_levels,
-                                    g_log_functor  lor_func,
+guint GARNET_API g_log_set_handler( const gchar*   log_domain,
+                                    LogLevelFlags  log_levels,
+                                    g_log_functor  log_func,
                                     VALUE          user_data
                                     );
 
 
 /**
- * @since 2010-09-14T14:45:40+0900
+ * \since 2010-09-14T14:45:40+0900
  */
-void GARNET_API g_log_remove_handler( const gchar* lor_domain,
+void GARNET_API g_log_remove_handler( const gchar* log_domain,
                                       guint        hundler_id
                                       );
 
 
 /**
- * @since 2010-09-14T14:45:58+0900
+ * \since 2010-09-14T14:45:58+0900
  */
-void GARNET_API g_log_default_handler( const gchar*    lor_domain,
-                                       LogLevelFlags   lor_level,
+void GARNET_API g_log_default_handler( const gchar*    log_domain,
+                                       LogLevelFlags   log_level,
                                        const gchar*    message,
                                        VALUE           user_data
                                        );
 
 
 #endif  /* garnet_glogger_h */
+// Local Variables:
+//   coding: shift_jis
+// End:
+// glogger.h ends here

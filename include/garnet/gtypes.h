@@ -1,8 +1,7 @@
-Ôªø/* -*- encoding: utf-8; -*- */
 /**
- * @file    gtypes.h
- * @since   %create-timestamp%
- * @brief   libgarnet „Åß‰Ωø„ÅÜÂûã„Ç®„Ç§„É™„Ç¢„Çπ„ÄÇ
+ * \file    gtypes.h
+ * \since   %create-timestamp%
+ * \brief   libgarnet Ç≈égÇ§å^ÉGÉCÉäÉAÉXÅB
  */
 /*
     Copyright (c) 2010-2011 %full-author% %author-email%
@@ -19,8 +18,9 @@
 
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
-
-    $Id gtypes.h %timestamp% %author% $
+ */
+/*
+    $Id gtypes.h %timestamp% noqisofon $
  */
 #ifndef garnet_gtypes_h
 #define garnet_gtypes_h
@@ -28,20 +28,25 @@
 #include <stdint.h>
 
 
-#ifndef GARNET_DEFINE_VALUE
+#ifndef GARNET_DEFINED_VALUE
 typedef     void*       VALUE;
-#   define      GARNET_DEFINE_VALUE
-#endif  /* ndef GARNET_DEFINE_VALUE */
+#   define      GARNET_DEFINED_VALUE
+#endif  /* ndef GARNET_DEFINED_VALUE */
 
-#ifndef GARNET_DEFINE_GINT
+#ifndef GARNET_DEFINED_GINT
 typedef     int32_t       gint;
-#   define      GARNET_DEFINE_GINT
-#endif  /* GARNET_DEFINE_GUINT */
+#   define      GARNET_DEFINED_GINT
+#endif  /* GARNET_DEFINED_GUINT */
 
-#ifndef GARNET_DEFINE_GUINT
+#ifndef GARNET_DEFINED_GBYTE
+typedef     char        gbyte;
+#   define      GARNET_DEFINED_GBYTE
+#endif  /* ndef GARNET_DEFINED_GBYTE */
+
+#ifndef GARNET_DEFINED_GUINT
 typedef     uint32_t       guint;
-#   define      GARNET_DEFINE_GUINT
-#endif  /* GARNET_DEFINE_GUINT */
+#   define      GARNET_DEFINED_GUINT
+#endif  /* GARNET_DEFINED_GUINT */
 
 #ifndef GARNET_DEFINED_GCHAR
 typedef     char        gchar;
@@ -62,3 +67,7 @@ typedef     bool        gboolean;
 
 
 #endif  /* garnet_gtypes_h */
+// Local Variables:
+//   coding: shift_jis
+// End:
+// gtypes.h ends here

@@ -1,8 +1,7 @@
-ï»¿/* -*- encoding: utf-8; -*- */
 /**
- * @file    glinkedlist.h
- * @since   2010-10-13T09:31:23+0900
- * @brief   åŒæ–¹å‘ãƒªãƒ³ã‚¯ãƒªã‚¹ãƒˆã€‚
+ * \file    glinkedlist.h
+ * \since   2010-10-13T09:31:23+0900
+ * \brief   ‘o•ûŒüƒŠƒ“ƒNƒŠƒXƒgB
  */
 /*
     Copyright (c) 2010-2011 %full-author% %author-email%
@@ -20,28 +19,31 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id glinkedlist.h %timestamp% %author% $
+    $Id glinkedlist.h %timestamp% noqisofon $
  */
 #ifndef garnet_glinkedlist_h
 #define garnet_glinkedlist_h
 
-#ifndef GARNET_DEFINE_GARNET_API
-#   define     GARNET_API      __stdcall
-#endif  /* ndef GARNET_DEFINE_GARNET_API */
+#include <stdint.h>
 
-#ifndef GARNET_DEFINE_VALUE
+#ifndef GARNET_DEFINED_GARNET_API
+#   define      GARNET_API                  __stdcall
+#   define      GARNET_DEFINED_GARNET_API
+#endif  /* ndef GARNET_DEFINED_GARNET_API */
+
+#ifndef GARNET_DEFINED_VALUE
 typedef     void*       VALUE;
-#   define      GARNET_DEFINE_VALUE
-#endif  /* GARNET_DEFINE_VALUE */
+#   define      GARNET_DEFINED_VALUE
+#endif  /* GARNET_DEFINED_VALUE */
 
-#ifndef GARNET_DEFINE_GINT
+#ifndef GARNET_DEFINED_GINT
 typedef     int32_t       gint;
-#   define      GARNET_DEFINE_GINT
-#endif  /* GARNET_DEFINE_GINT */
+#   define      GARNET_DEFINED_GINT
+#endif  /* GARNET_DEFINED_GINT */
 
 
 /**
- * ãƒªãƒ³ã‚¯ãƒªã‚¹ãƒˆã®ãƒãƒ¼ãƒ‰ã§ã™ã€‚
+ * ƒŠƒ“ƒNƒŠƒXƒg‚Ìƒm[ƒh‚Å‚·B
  */
 typedef struct g_linkedlist_t {
     struct g_linkedlist_t*      head;
@@ -51,57 +53,61 @@ typedef struct g_linkedlist_t {
 
 
 /**
- * ãƒªã‚¹ãƒˆã®æœ«å°¾ã« item ã‚’å…¥ã‚ŒãŸãƒãƒ¼ãƒ‰ã‚’è¿½åŠ ã—ã¾ã™ã€‚
+ * ƒŠƒXƒg‚Ì––”ö‚É item ‚ğ“ü‚ê‚½ƒm[ƒh‚ğ’Ç‰Á‚µ‚Ü‚·B
  */
 GList* GARNET_API  g_list_add(GList* self, VALUE item);
 
 
 /**
- * ãƒªã‚¹ãƒˆã®å…ˆé ­ã« item ã‚’è¿½åŠ ã—ã¾ã™ã€‚
+ * ƒŠƒXƒg‚Ìæ“ª‚É item ‚ğ’Ç‰Á‚µ‚Ü‚·B
  */
 GList* GARNET_API  g_list_add_front(GList* self, VALUE item);
 
 
 /**
- * ãƒªã‚¹ãƒˆã® position ç•ªç›®ã« item ã‚’æŒ¿å…¥ã—ã¾ã™ã€‚
+ * ƒŠƒXƒg‚Ì position ”Ô–Ú‚É item ‚ğ‘}“ü‚µ‚Ü‚·B
  */
 GList* GARNET_API  g_list_insert(GList* self, VALUE item, gint position);
 
 
 /**
- * æŒ‡å®šã•ã‚ŒãŸãƒªã‚¹ãƒˆã®å…ˆé ­ã®ãƒãƒ¼ãƒ‰ã‚’è¿”ã—ã¾ã™ã€‚
+ * w’è‚³‚ê‚½ƒŠƒXƒg‚Ìæ“ª‚Ìƒm[ƒh‚ğ•Ô‚µ‚Ü‚·B
  */
 GList* GARNET_API  g_list_front(GList* self);
 
 
 /**
- * æŒ‡å®šã•ã‚ŒãŸãƒªã‚¹ãƒˆã®æœ«å°¾ã®ãƒãƒ¼ãƒ‰ã‚’è¿”ã—ã¾ã™ã€‚
+ * w’è‚³‚ê‚½ƒŠƒXƒg‚Ì––”ö‚Ìƒm[ƒh‚ğ•Ô‚µ‚Ü‚·B
  */
 GList* GARNET_API  g_list_behind(GList* self);
 
 
 /**
- * æŒ‡å®šã•ã‚ŒãŸãƒªã‚¹ãƒˆã®ã‚µã‚¤ã‚ºã‚’è¿”ã—ã¾ã™ã€‚
+ * w’è‚³‚ê‚½ƒŠƒXƒg‚ÌƒTƒCƒY‚ğ•Ô‚µ‚Ü‚·B
  */
 size_t GARNET_API  g_list_length(GList* self);
 
 
 /**
- * ãƒªã‚¹ãƒˆã® position ç•ªç›®ã®ãƒãƒ¼ãƒ‰ã‚’è¿”ã—ã¾ã™ã€‚
+ * ƒŠƒXƒg‚Ì position ”Ô–Ú‚Ìƒm[ƒh‚ğ•Ô‚µ‚Ü‚·B
  */
 GList* GARNET_API  g_list_advance(GList* self, gint distance);
 
 
 /**
- * ãƒªã‚¹ãƒˆã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸå€¤ãŒå…¥ã£ã¦ã„ã‚‹ãƒãƒ¼ãƒ‰ã‚’æ¤œç´¢ã—ã¾ã™ã€‚
+ * ƒŠƒXƒg‚©‚çw’è‚³‚ê‚½’l‚ª“ü‚Á‚Ä‚¢‚éƒm[ƒh‚ğŒŸõ‚µ‚Ü‚·B
  */
 GList* GARNET_API  g_list_find(GList* self, VALUE found);
 
 
 /**
- * æŒ‡å®šã•ã‚ŒãŸãƒªã‚¹ãƒˆãŒä½¿ã£ã¦ã„ã‚‹ãƒ¡ãƒ¢ãƒªã‚’å…¨ã¦é–‹æ”¾ã—ã¾ã™ã€‚
+ * w’è‚³‚ê‚½ƒŠƒXƒg‚ªg‚Á‚Ä‚¢‚éƒƒ‚ƒŠ‚ğ‘S‚ÄŠJ•ú‚µ‚Ü‚·B
  */
 void GARNET_API    g_list_free(GList* self);
 
 
 #endif  /* garnet_glinkedlist_h */
+// Local Variables:
+//   coding: shift_jis
+// End:
+// glinkedlist.h ends here

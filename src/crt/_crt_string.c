@@ -22,9 +22,11 @@
 
     $Id _crt_string.c %timestamp% %author% $
  */
+#include <stdafx.h>
 #include <errno.h>
 #include <string.h>
 
+#include <crt/_guard_snip.h>
 #include <crt/_crt_string.h>
 
 
@@ -74,7 +76,7 @@ errno_t crt_strncpy(char* destination, size_t number_of_elements, const char* so
 
 errno_t crt_strcat(char* destination, size_t number_of_elements, const char* source)
 {
-    char    *p, *dst_last;
+    char    *p  = NULL, *dst_last;
     size_t  i, dst_len, src_len;
 
     dst_len     = strlen( destination );

@@ -1,4 +1,3 @@
-﻿/* -*- encoding: utf-8; -*- */
 /**
  * @file _guard_snip.h
  * @since %create-timestamp%
@@ -34,19 +33,21 @@
 #   define  GARNET_ASSERT_ERROR(expr)
 #endif  /* defined(_DEBUG) || defined(DEBUG) */
 
+#define     GARNET_INVALID_PARAMETER(expr)
+
 
 /**
  * @def GARNET_VALIDATE_STRTRUNCATE_RETURN_ERRCODE
- * GARNET_VALIDATE_RETURN_ERRCODE の文字列切り捨てバージョンです。
- * @par 文字列切り捨てバージョンって？
- * <p>ある文字列操作関数では、エラー時に str_truncate を行うものがあります。<br />
- * その場合に使用されます。</p>
+ * GARNET_VALIDATE_RETURN_ERRCODE �̕�����؂�̂ăo�[�W�����ł��B
+ * @par ������؂�̂ăo�[�W�������āH
+ * <p>���镶���񑀍�֐��ł́A�G���[���� str_truncate ���s�����̂�����܂��B<br />
+ * ���̏ꍇ�Ɏg�p����܂��B</p>
  */
 
 
 /**
  * @def GARNET_VALIDATE_RETURN_ERRCODE
- * expr が有効化どうかを判別し、真なら err を返すマクロスニペットです。
+ * expr ���L�����ǂ����𔻕ʂ��A�^�Ȃ� err ��Ԃ��}�N���X�j�y�b�g�ł��B
  */
 #define     GARNET_VALIDATE_RETURN_ERRCODE(expr, err)                   \
     {                                                                   \
@@ -73,3 +74,7 @@
 
 
 #endif  /* garnet_crt__err_handle_h */
+// Local Variables:
+//   coding: shift_jis-dos
+// End:
+// _guard_snip.h ends here

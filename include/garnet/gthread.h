@@ -1,8 +1,7 @@
-ï»¿/* -*- encoding: utf-8; -*- */
 /**
- * @file    gthread.h
- * @since   2010-10-14T10:19:44
- * @brief   æ¨™æº–ã‚¹ãƒ¬ãƒƒãƒ‰æ“ä½œé–¢æ•°ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã€‚
+ * \file    gthread.h
+ * \since   2010-10-14T10:19:44
+ * \brief   •W€ƒXƒŒƒbƒh‘€ìŠÖ”ƒ‚ƒWƒ…[ƒ‹B
  */
 /*
     Copyright (c) 2010-2011 %full-author% %author-email%
@@ -20,15 +19,17 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 
-    $Id gthread.h %timestamp% %author% $
+    $Id gthread.h %timestamp% noqisofon $
  */
 #ifndef garnet_gthread_h
 #define garnet_gthread_h
-
-#include <stdlib.h>
 
 
 #define      g_exit      exit
 
 
 #endif  /* garnet_gthread_h */
+// Local Variables:
+//   coding: shift_jis
+// End:
+// gthread.h ends here
